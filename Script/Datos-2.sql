@@ -316,3 +316,12 @@ insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 21);
 
 select * from AUTOR_LIBRO;
 
+--------------------------------------------------------------------
+-- Datos de tipo de prestamo
+insert into TIPOS_PRESTAMO (TPR_Nombre) values('Lectura en Sala');
+insert into TIPOS_PRESTAMO (TPR_Nombre) values('Prestamo a Domicilio');
+
+select * from TIPOS_PRESTAMO;
+
+
+
