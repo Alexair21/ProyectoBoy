@@ -35,3 +35,21 @@ GO
 
 DROP VIEW V_USUARIOS_CARNET
 SELECT * FROM V_USUARIOS_CARNET
+
+-- Vista para ver que Usuario presto que libro
+CREATE VIEW V_USUARIOS_LIBROS
+AS
+    SELECT DISTINCT
+    FI.FIN_Nombre as [Nombre],
+    L.LBR_Titulo as [LIBRO],
+    P.PRS_FechaPrestamo as [Fecha_Prestamo],
+    P.PRS_FechaDevolucion as [Fecha_Devolucion]
+
+    FROM FICHAS_INSCRIPCION FI
+    INNER JOIN USUARIOS U on FI.FIN_Id = U.FIN_Id
+    INNER JOIN PRESTAMOS P on U.USR_Id = P.USR_Id
+    INNER JOIN LIBROS L on P.LBR_Id = L.LBR_Id
+GO
+
+DROP VIEW V_USUARIOS_LIBROS
+SELECT * FROM V_USUARIOS_LIBROS

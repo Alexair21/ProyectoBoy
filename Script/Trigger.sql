@@ -48,14 +48,50 @@ AS
 GO
 
 
+CREATE TRIGGER TRG_PRESTAMOS
+    ON PRESTAMOS
+    FOR INSERT
+AS
+BEGIN
+    BEGIN TRANSACTION TR_PRESTAMOS
+        DECLARE @LBR_Id  INT
+        DECLARE @LBR_Cantidad INT
+
+        -- Hacer que la cantidad de libros disminuya
+        SELECT
+            @LBR_Id = LBR_Id,
+            @LBR_Cantidad = LBR_Cantidad
+        FROM LIBROS WHERE LBR_Id = (SELECT LBR_Id FROM inserted)
+
+        IF @LBR_Cantidad > 0
+            BEGIN
+                UPDATE LIBROS
+                SET LBR_Cantidad = @LBR_Cantidad -1
+                WHERE LBR_Id = @LBR_Id
+                COMMIT TRANSACTION TR_PRESTAMOS
+            END
+        ELSE
+            BEGIN
+            ROLLBACK TRANSACTION TR_PRESTAMOS
+            RAISERROR ('No hay libros disponibles', 16, 1)
+        END
+END
+
+-- EJECUCION DE LA FUNCION
 
 
 
+INSERT INTO PRESTAMOS (LBR_Id, TPR_Id, PRS_FechaPrestamo, PRS_FechaDevolucion, USR_Id, CAR_Id, ETP_Id )
+VALUES
+    (1, 1, GETDATE(), DATEADD(DAY, 3,GETDATE()), 1, 4, NULL);
 
-
-
-
-
+    --Agregar 2 años a la fecha actual
+    --DATEADD(YEAR, 2, GETDATE())
+SELECT * FROM LIBROS
+SELECT * FROM TIPOS_PRESTAMO
+SELECT * FROM PRESTAMOS
+SELECT * FROM CARNETS
+SELECT * FROM FICHAS_INSCRIPCION
 
 
 

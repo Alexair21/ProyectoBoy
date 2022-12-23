@@ -257,7 +257,7 @@ CREATE TABLE PRESTAMOS
 	PRS_FechaDevolucion  date  NOT NULL ,
 	USR_Id               int  NOT NULL ,
 	CAR_Id               int  NOT NULL ,
-	PRS_FechaPrestamo    char(18)  NULL ,
+	PRS_FechaPrestamo    DATE NOT NULL ,
 	ETP_Id               char(18)  NULL
 )
 go

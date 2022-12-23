@@ -323,7 +323,6 @@ select * from TIPOS_PRESTAMO;
 --Datos de ficha inscripcion; ANTES EJECUTAR EL TRIGGER QUE SE ENCUENTRA EN EL SCRIPT: TRIGGER
 
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id) values ('Maria Hernandez Garcia', 'Calle San Juan #5', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 1)
-
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id) values ('Juan Rodriguez Diaz', 'Avenida Revolución #15', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 2)
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id) values ('Ana Garcia Aponte', 'Carretera Central #25', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 1)
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id) values ('Carlos Diaz Diaz', 'Calle del Sol #35', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5)
@@ -373,4 +372,6 @@ INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Cel
 SELECT * FROM FICHAS_INSCRIPCION
 SELECT  * FROM USUARIOS
 SELECT  * FROM CARNETS
+
+
 
