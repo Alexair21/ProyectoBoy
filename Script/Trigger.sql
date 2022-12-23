@@ -2,7 +2,7 @@ use proyecto2;
 
 --Trigger para llenar la tabla USUARIOS cuando se haga un registro en la tabla FICHA_INSCRIPCION
 
-Create TRIGGER TR_USUARIOS
+CREATE TRIGGER TR_USUARIOS
     ON FICHAS_INSCRIPCION
     FOR INSERT
 AS
@@ -48,32 +48,11 @@ AS
 GO
 
 
-select  *  from  FICHAS_INSCRIPCION
-select * from USUARIOS
-select * from CARNETS
---Crear una funcion que revise si en lo
-
---Vista que me enseñe el nombre de cada libro con su categoria prima y secundaria
-CREATE VIEW V_LIBROS
-AS
-    SELECT
-    L.LBR_Titulo AS [TITULO],
-    CP.CTP_Descripcion AS [CATEGORIA PRINCIPAL],
-    CS.CTS_Descripcion AS [CATEGORIA SECUNDARIA]
 
 
-    FROM LIBROS L
-    inner join CATEGORIAS C on L.CAT_Id = C.CAT_Id
-    inner join CAT_PRIMARIA CP on C.CTP_Id = CP.CTP_Id
-    inner join CAT_SECUNDARIA CS on C.CTS_Id = CS.CTS_Id
-GO
-DROP VIEW V_LIBROS
 
---EJECTUAR LA VISTA
-SELECT * FROM V_LIBROS
-SELECT * FROM LIBROS
 
---Vista que me enseñe que usuarios tiene carnet
+
 
 
 
