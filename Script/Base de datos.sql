@@ -172,7 +172,7 @@ go
 CREATE TABLE FICHAS_INSCRIPCION
 (
 	FIN_Id               int IDENTITY ( 1,1 ) ,
-	FIN_Nombre           varbinary(60)  NOT NULL ,
+	FIN_Nombre           varchar(60)  NOT NULL ,
 	FIN_Direccion        varchar(50)  NOT NULL ,
 	FIN_Telefono         char(10)  NOT NULL ,
 	FIN_Celular          char(09)  NOT NULL ,
