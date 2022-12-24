@@ -81,9 +81,7 @@ BEGIN
 GO
 
 -------------------------------------------------------------------------------------------------------------------------
---funcion que verifique si EstadoCarnet es 1 o 0 en la tabla USUARIOS
-
-
+-- Procedimiento almacenado para Insertar un prestamo
 CREATE PROCEDURE SP_InsertarPrestamo(
     @LBR_Id INT,
     @PRS_FechaPrestamo DATE,
@@ -120,36 +118,70 @@ GO
 -------------------------------------------------------------------------------------------------------------------------
 DROP PROCEDURE SP_InsertarPrestamo
 
+-- Procedimiento almacenado para Insertar una Inspeccion
+CREATE PROCEDURE SP_InsertarInspeccion(
+    @LBR_Id INT,
+    @INS_ESTADO SMALLINT
+    )
+AS
+BEGIN
+    SELECT @LBR_Id = LBR_Id
+    FROM LIBROS WHERE LBR_Id = @LBR_Id
 
---EJECTUAR PROCEDIMIENTO
-SELECT * FROM USUARIOS
-SELECT * FROM LIBROS
-SELECT  * FROM PRESTAMOS
+    IF @INS_ESTADO = 1 AND @LBR_Id IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 2 AND @LBR_Id IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 3 AND @LBR_Id IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 4 AND @LBR_Id IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 5 AND @LBR_Id IS NOT NULL
+          BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE
+        BEGIN
+            PRINT 'NO EXISTE EL LIBRO'
+        END
+END
+
+-- Procedimiento almacenado para la tabla DEVOLUCIONES
+ALTER PROCEDURE SP_InsertarDevolucion(
+    @PRS_Id INT,
+    @INS_Id INT,
+    @DEV_Fecha DATE
+)
+AS
+BEGIN
+    IF EXISTS (SELECT * FROM PRESTAMOS WHERE PRS_Id = @PRS_Id) AND EXISTS (SELECT * FROM INSPECCION WHERE INS_Id = @INS_Id)
+        BEGIN
+            INSERT INTO DEVOLUCIONES (PRS_Id, INS_Id, DEV_Fecha)
+            VALUES (@PRS_Id, @INS_Id, @DEV_Fecha)
+        END
+    ELSE
+        BEGIN
+            PRINT 'NO EXISTE EL PRESTAMO O LA INSPECCION'
+        END
+END
+
+-- ejecutar el procedimiento almacenado
+EXEC SP_InsertarDevolucion 1, 4, '2020-12-31'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    --Agregar 2 años a la fecha actual
-    --DATEADD(YEAR, 2, GETDATE())
-SELECT * FROM LIBROS
-SELECT * FROM TIPOS_PRESTAMO
-SELECT * FROM PRESTAMOS
-SELECT * FROM CARNETS
-SELECT * FROM FICHAS_INSCRIPCION
-
+select * from DEVOLUCIONES
 
 

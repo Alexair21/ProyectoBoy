@@ -33,7 +33,7 @@ AS
 GO
 
 DROP VIEW V_USUARIOS_CARNET
-
+Select * from V_USUARIOS_CARNET
 
 -- Vista para ver que Usuario presto que libro
 CREATE VIEW V_USUARIOS_LIBROS
@@ -69,6 +69,48 @@ AS
     INNER JOIN CARNETS C on U.USR_Id= C.CAR_Id
 GO
 
+
 DROP VIEW V_DOCUMENTO_NUMERO
 SELECT * FROM V_DOCUMENTO_NUMERO
-SELECT * FROM V_USUARIOS_CARNET
+
+
+-- Vista que me enseñe La inspeccion de los libros
+ALTER VIEW V_INSPECCION_LIBROS
+AS
+    SELECT
+        L.LBR_Codigo as [Codigo_Libro],
+        LBR_Titulo as [Titulo],
+        CASE WHEN INS_Estado = 1 THEN 'OK'
+            WHEN INS_Estado = 2 THEN 'ROTO'
+            WHEN INS_Estado = 3 THEN 'FALTAN HOJAS'
+            WHEN INS_Estado = 4 THEN 'PERDIDO'
+            ELSE 'MANCHADO' END as [Estado]
+    FROM  INSPECCION I
+    INNER JOIN LIBROS L on I.LBR_Id = L.LBR_Id
+GO
+
+SELECT * FROM V_INSPECCION_LIBROS
+
+-- VISTA DEVOLUCIONES_USUARIO E INSPECCION_LIBROS Y PRESTAMOS
+CREATE VIEW V_DEVOLUCIONES_USUARIO
+AS
+    SELECT
+    FI.FIN_Nombre as [Nombre],
+    L.LBR_Titulo as [LIBRO],
+    P.PRS_FechaPrestamo as [Fecha_Prestamo],
+    P.PRS_FechaDevolucion as [Fecha_Devolucion],
+    CASE WHEN INS_Estado = 1 THEN 'OK'
+            WHEN INS_Estado = 2 THEN 'ROTO'
+            WHEN INS_Estado = 3 THEN 'FALTAN HOJAS'
+            WHEN INS_Estado = 4 THEN 'PERDIDO'
+            ELSE 'MANCHADO' END as [Estado]
+
+    FROM DEVOLUCIONES D, FICHAS_INSCRIPCION FI
+    INNER JOIN USUARIOS U on FI.FIN_Id = U.FIN_Id
+    INNER JOIN PRESTAMOS P on U.USR_Id = P.USR_Id
+    INNER JOIN LIBROS L on P.LBR_Id = L.LBR_Id
+    INNER JOIN INSPECCION I on L.LBR_Id = I.LBR_Id
+GO
+
+DROP VIEW V_DEVOLUCIONES_USUARIO
+SELECT * FROM V_DEVOLUCIONES_USUARIO

@@ -361,14 +361,28 @@ INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Cel
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Rocio Rodriguez Jimenez', 'Avenida 2 de mayo #123', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 2, '72899283')
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Diego Huamanjulca Guerrero', 'Calle 16', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
 
+--- Insertar datos en la tabla PRESTAMOS
 
 EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',7
 EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',4
 
+-- Insertar datos en la tabla INSPECCION
+EXECUTE SP_InsertarInspeccion 1, 1
+EXECUTE SP_InsertarInspeccion 1, 2
+EXECUTE SP_InsertarInspeccion 1, 3
+EXECUTE SP_InsertarInspeccion 1, 4
+EXECUTE SP_InsertarInspeccion 1, 5
+
+
+
+-- Muestra de datos de las tablas
+
+SELECT * FROM USUARIOS
+SELECT * FROM LIBROS
+SELECT * FROM PRESTAMOS
+SELECT * FROM LIBROS
+SELECT * FROM TIPOS_PRESTAMO
+SELECT * FROM PRESTAMOS
+SELECT * FROM CARNETS
 SELECT * FROM FICHAS_INSCRIPCION
-SELECT  * FROM USUARIOS
-SELECT  * FROM CARNETS
-SELECT  * FROM PRESTAMOS
-
-
-
+SELECT * FROM INSPECCION

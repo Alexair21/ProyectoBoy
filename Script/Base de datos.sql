@@ -198,7 +198,7 @@ CREATE TABLE INSPECCION
 (
 	INS_Id               int IDENTITY ( 1,1 ) ,
 	LBR_Id               int  NOT NULL ,
-	INS_Estado           char(01)  NOT NULL
+	INS_Estado           SMALLINT  NOT NULL ,
 )
 go
 
