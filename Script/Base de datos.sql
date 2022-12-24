@@ -127,7 +127,8 @@ CREATE TABLE DEVOLUCIONES
 (
 	DEV_Id               int IDENTITY ( 1,1 ) ,
 	PRS_Id               int  NOT NULL ,
-	INS_Id               int  NOT NULL
+	INS_Id               int  NOT NULL ,
+	DEV_Fecha            char(18)  NULL
 )
 go
 
@@ -156,7 +157,7 @@ go
 
 CREATE TABLE ESTADO_TIPO_PRESTAMO
 (
-	ETP_Id               char(18)  NOT NULL ,
+	ETP_Id               int IDENTITY ( 1,1 ) ,
 	ETP_Descripcion      char(20)  NULL
 )
 go
@@ -180,7 +181,8 @@ CREATE TABLE FICHAS_INSCRIPCION
 	FIN_GradoEstudios    varchar(30)  NOT NULL ,
 	FIN_Foto             varchar(100)  NOT NULL ,
 	FIN_Fecha            date  NOT NULL ,
-	CEN_Id               int  NULL
+	CEN_Id               int  NULL ,
+	FIN_Dni              char(8)  NOT NULL
 )
 go
 
@@ -256,9 +258,9 @@ CREATE TABLE PRESTAMOS
 	TPR_Id               int  NOT NULL ,
 	PRS_FechaDevolucion  date  NOT NULL ,
 	USR_Id               int  NOT NULL ,
-	CAR_Id               int  NOT NULL ,
-	PRS_FechaPrestamo    DATE NOT NULL ,
-	ETP_Id               char(18)  NULL
+	PRS_FechaPrestamo    date  NULL ,
+	ETP_Id               int  NOT NULL ,
+	DocumentoPrestamo    char(18)  NULL
 )
 go
 
@@ -275,7 +277,7 @@ CREATE TABLE RESERVA
 	RES_Id               int IDENTITY ( 1,1 ) ,
 	USR_Id               int  NULL ,
 	LBR_Id               int  NULL ,
-	RES_Inicio           date  NOT NULL
+	RES_Inicio           datetime  NOT NULL
 )
 go
 
@@ -338,7 +340,7 @@ CREATE TABLE USUARIOS
 (
 	USR_Id               int IDENTITY ( 1,1 ) ,
 	FIN_Id               int  NOT NULL ,
-	ESTADO_CARNET        smallint  NULL
+	EstadoCarnet         smallint  NULL
 )
 go
 
@@ -496,15 +498,6 @@ go
 
 
 ALTER TABLE PRESTAMOS
-	ADD CONSTRAINT R_43 FOREIGN KEY (CAR_Id) REFERENCES CARNETS(CAR_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
-ALTER TABLE PRESTAMOS
 	ADD CONSTRAINT R_93 FOREIGN KEY (ETP_Id) REFERENCES ESTADO_TIPO_PRESTAMO(ETP_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
@@ -545,14 +538,4 @@ ALTER TABLE RETENCION
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
-
-
-
-
-ALTER TABLE USUARIOS
-	ADD CONSTRAINT R_44 FOREIGN KEY (FIN_Id) REFERENCES FICHAS_INSCRIPCION(FIN_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
 

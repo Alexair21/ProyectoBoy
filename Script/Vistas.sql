@@ -24,17 +24,16 @@ CREATE VIEW V_USUARIOS_CARNET
 AS
     SELECT
     FI.FIN_Nombre as [Nombre],
-    C.USR_Codigo as [Codigo],
+    U.USR_Id as [Codigo],
     --si ESTADO_CARNET = 1, entonces 'CON CARNET', si no 'SIN CARNET'
-    CASE WHEN U.ESTADO_CARNET = 1 THEN 'CON CARNET' ELSE 'SIN CARNET' END as [Estado Carnet]
+    CASE WHEN U.EstadoCarnet= 1 THEN 'CON CARNET' ELSE 'SIN CARNET' END as [Estado Carnet]
 
     FROM FICHAS_INSCRIPCION FI
     INNER JOIN USUARIOS U on FI.FIN_Id = U.FIN_Id
-    INNER JOIN CARNETS C on U.USR_Id = C.CAR_Id
 GO
 
 DROP VIEW V_USUARIOS_CARNET
-SELECT * FROM V_USUARIOS_CARNET
+
 
 -- Vista para ver que Usuario presto que libro
 CREATE VIEW V_USUARIOS_LIBROS
@@ -53,3 +52,23 @@ GO
 
 DROP VIEW V_USUARIOS_LIBROS
 SELECT * FROM V_USUARIOS_LIBROS
+
+--------------------------------------------------------------------------------
+CREATE VIEW V_DOCUMENTO_NUMERO
+AS
+    SELECT
+    FI.FIN_Nombre as [Nombre],
+    U.USR_Id as [Codigo],
+    --si ESTADO_CARNET = 1, entonces 'CON CARNET', si no 'SIN CARNET'
+    CASE WHEN U.EstadoCarnet= 1 THEN 'CON CARNET' ELSE 'CON DNI' END as [Estado Carnet],
+    CASE WHEN U.EstadoCarnet= 1 THEN C.CAR_Id ELSE FI.FIN_DNI END as [Numero]
+
+
+    FROM FICHAS_INSCRIPCION FI
+    INNER JOIN USUARIOS U on FI.FIN_Id = U.FIN_Id
+    INNER JOIN CARNETS C on U.USR_Id= C.CAR_Id
+GO
+
+DROP VIEW V_DOCUMENTO_NUMERO
+SELECT * FROM V_DOCUMENTO_NUMERO
+SELECT * FROM V_USUARIOS_CARNET

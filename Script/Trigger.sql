@@ -14,7 +14,7 @@ AS
         SET
         @CARNET = (SELECT CAST(RAND() * 2 AS INT))
         --insertar en la tabla USUARIOS
-        INSERT INTO USUARIOS (FIN_Id, ESTADO_CARNET)
+        INSERT INTO USUARIOS (FIN_Id, EstadoCarnet)
         VALUES (@FIN_Id, @CARNET)
 
         IF @CARNET = 1
@@ -47,6 +47,8 @@ AS
     END
 GO
 
+-------------------------------------------------------------------------------------------------------------------------
+--Trigger para actualizar La cantidad de libros prestados en la tabla USUARIOS
 
 CREATE TRIGGER TRG_PRESTAMOS
     ON PRESTAMOS
@@ -72,18 +74,74 @@ BEGIN
             END
         ELSE
             BEGIN
-            ROLLBACK TRANSACTION TR_PRESTAMOS
-            RAISERROR ('No hay libros disponibles', 16, 1)
-        END
-END
+                --sacar en consola el error
+                 PRINT 'No hay libros disponibles'
+            END
+    END
+GO
 
--- EJECUCION DE LA FUNCION
+-------------------------------------------------------------------------------------------------------------------------
+--funcion que verifique si EstadoCarnet es 1 o 0 en la tabla USUARIOS
+
+
+CREATE PROCEDURE SP_InsertarPrestamo(
+    @LBR_Id INT,
+    @PRS_FechaPrestamo DATE,
+    @PRS_FechaDevolucion DATE,
+    @USR_Id CHAR(18)
+    )
+AS
+BEGIN
+    DECLARE
+        @TPR_Id INT,
+        @ETP_Id INT,
+        @DocumentoPrestamo char(18)
+
+
+    IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = @USR_Id AND EstadoCarnet = 1)
+        BEGIN
+            --traemos el CAR_Id de la tabla CARNET de ese usuario y lo almacenamos en una variable @DocumentoPrestamo
+            SET @DocumentoPrestamo = (SELECT CAR_Id FROM CARNETS WHERE USR_Codigo = @USR_Id)
+            SET @TPR_Id = (SELECT FLOOR(RAND()*(2-1)+1))
+            SET @ETP_Id = (SELECT FLOOR(RAND()*(2-1)+1))
+        end
+
+    ELSE
+        BEGIN
+            --traemos el DNI de la tabla FICHAS_INSCRIPCION de ese usuario y lo almacenamos en una variable @DocumentoPrestamo
+            SET @DocumentoPrestamo = (SELECT FIN_DNI FROM FICHAS_INSCRIPCION WHERE FIN_Id = @USR_Id)
+            SET @TPR_Id = 1
+            SET @ETP_Id = (SELECT FLOOR(RAND()*(2-1)+1))
+        end
+        INSERT INTO PRESTAMOS (LBR_Id, PRS_FechaPrestamo, PRS_FechaDevolucion, USR_Id, TPR_Id, ETP_Id, DocumentoPrestamo)
+        VALUES (@LBR_Id, @PRS_FechaPrestamo, @PRS_FechaDevolucion, @USR_Id, @TPR_Id, @ETP_Id, @DocumentoPrestamo)
+    END
+GO
+-------------------------------------------------------------------------------------------------------------------------
+DROP PROCEDURE SP_InsertarPrestamo
+
+
+--EJECTUAR PROCEDIMIENTO
+SELECT * FROM USUARIOS
+SELECT * FROM LIBROS
+SELECT  * FROM PRESTAMOS
 
 
 
-INSERT INTO PRESTAMOS (LBR_Id, TPR_Id, PRS_FechaPrestamo, PRS_FechaDevolucion, USR_Id, CAR_Id, ETP_Id )
-VALUES
-    (1, 1, GETDATE(), DATEADD(DAY, 3,GETDATE()), 1, 4, NULL);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     --Agregar 2 años a la fecha actual
     --DATEADD(YEAR, 2, GETDATE())
