@@ -127,7 +127,8 @@ CREATE TABLE DEVOLUCIONES
 (
 	DEV_Id               int IDENTITY ( 1,1 ) ,
 	PRS_Id               int  NOT NULL ,
-	INS_Id               int  NOT NULL
+	INS_Id               int  NOT NULL ,
+	DEV_FechaDevolucion  date  NULL
 )
 go
 
@@ -180,7 +181,8 @@ CREATE TABLE FICHAS_INSCRIPCION
 	FIN_GradoEstudios    varchar(30)  NOT NULL ,
 	FIN_Foto             varchar(100)  NOT NULL ,
 	FIN_Fecha            date  NOT NULL ,
-	CEN_Id               int  NULL
+	CEN_Id               int  NULL ,
+	FIN_Dni              char(8)  NOT NULL
 )
 go
 
@@ -195,8 +197,7 @@ go
 CREATE TABLE INSPECCION
 (
 	INS_Id               int IDENTITY ( 1,1 ) ,
-	LBR_Id               int  NOT NULL ,
-	INS_Estado           char(01)  NOT NULL
+	INS_Estado           smallint  NOT NULL
 )
 go
 
@@ -257,8 +258,9 @@ CREATE TABLE PRESTAMOS
 	PRS_FechaDevolucion  date  NOT NULL ,
 	USR_Id               int  NOT NULL ,
 	CAR_Id               int  NOT NULL ,
-	PRS_FechaPrestamo    char(18)  NULL ,
-	ETP_Id               char(18)  NULL
+	PRS_FechaPrestamo    date  NULL ,
+	ETP_Id               char(18)  NULL ,
+	PRS_DocumentoPrestamo char(18)  NULL
 )
 go
 
@@ -289,17 +291,16 @@ go
 
 CREATE TABLE RETENCION
 (
-	INS_Id               int  NOT NULL ,
 	RTN_Id               int IDENTITY ( 1,1 ) ,
-	RTN_Estado           char(18)  NOT NULL ,
-	CAR_Id               int  NOT NULL
+	CAR_Id               int  NOT NULL ,
+	DEV_Id               int  NOT NULL
 )
 go
 
 
 
 ALTER TABLE RETENCION
-	ADD CONSTRAINT XPKRETENCION PRIMARY KEY  CLUSTERED (INS_Id ASC,RTN_Id ASC,CAR_Id ASC)
+	ADD CONSTRAINT XPKRETENCION PRIMARY KEY  CLUSTERED (RTN_Id ASC,CAR_Id ASC,DEV_Id ASC)
 go
 
 
@@ -338,7 +339,7 @@ CREATE TABLE USUARIOS
 (
 	USR_Id               int IDENTITY ( 1,1 ) ,
 	FIN_Id               int  NOT NULL ,
-	ESTADO_CARNET        smallint  NULL
+	EstadoCarnet         smallint  NULL
 )
 go
 
@@ -416,15 +417,6 @@ go
 
 ALTER TABLE FICHAS_INSCRIPCION
 	ADD CONSTRAINT R_67 FOREIGN KEY (CEN_Id) REFERENCES CENTROS_TRABAJO(CEN_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
-ALTER TABLE INSPECCION
-	ADD CONSTRAINT R_45 FOREIGN KEY (LBR_Id) REFERENCES LIBROS(LBR_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -532,15 +524,6 @@ go
 
 
 ALTER TABLE RETENCION
-	ADD CONSTRAINT R_75 FOREIGN KEY (INS_Id) REFERENCES INSPECCION(INS_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
-ALTER TABLE RETENCION
 	ADD CONSTRAINT R_76 FOREIGN KEY (CAR_Id) REFERENCES CARNETS(CAR_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
@@ -549,10 +532,9 @@ go
 
 
 
-ALTER TABLE USUARIOS
-	ADD CONSTRAINT R_44 FOREIGN KEY (FIN_Id) REFERENCES FICHAS_INSCRIPCION(FIN_Id)
+ALTER TABLE RETENCION
+	ADD CONSTRAINT R_98 FOREIGN KEY (DEV_Id) REFERENCES DEVOLUCIONES(DEV_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
-
 

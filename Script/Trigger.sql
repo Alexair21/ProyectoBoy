@@ -2,7 +2,7 @@ use proyecto2;
 
 --Trigger para llenar la tabla USUARIOS cuando se haga un registro en la tabla FICHA_INSCRIPCION
 
-Create TRIGGER TR_USUARIOS
+CREATE TRIGGER TR_USUARIOS
     ON FICHAS_INSCRIPCION
     FOR INSERT
 AS
@@ -14,7 +14,7 @@ AS
         SET
         @CARNET = (SELECT CAST(RAND() * 2 AS INT))
         --insertar en la tabla USUARIOS
-        INSERT INTO USUARIOS (FIN_Id, ESTADO_CARNET)
+        INSERT INTO USUARIOS (FIN_Id, EstadoCarnet)
         VALUES (@FIN_Id, @CARNET)
 
         IF @CARNET = 1
@@ -47,36 +47,139 @@ AS
     END
 GO
 
+-------------------------------------------------------------------------------------------------------------------------
+--Trigger para actualizar La cantidad de libros prestados en la tabla USUARIOS
 
-select  *  from  FICHAS_INSCRIPCION
-select * from USUARIOS
-select * from CARNETS
---Crear una funcion que revise si en lo
-
---Vista que me enseñe el nombre de cada libro con su categoria prima y secundaria
-CREATE VIEW V_LIBROS
+CREATE TRIGGER TRG_PRESTAMOS
+    ON PRESTAMOS
+    FOR INSERT
 AS
-    SELECT
-    L.LBR_Titulo AS [TITULO],
-    CP.CTP_Descripcion AS [CATEGORIA PRINCIPAL],
-    CS.CTS_Descripcion AS [CATEGORIA SECUNDARIA]
+BEGIN
+    BEGIN TRANSACTION TR_PRESTAMOS
+        DECLARE @LBR_Id  INT
+        DECLARE @LBR_Cantidad INT
 
+        -- Hacer que la cantidad de libros disminuya
+        SELECT
+            @LBR_Id = LBR_Id,
+            @LBR_Cantidad = LBR_Cantidad
+        FROM LIBROS WHERE LBR_Id = (SELECT LBR_Id FROM inserted)
 
-    FROM LIBROS L
-    inner join CATEGORIAS C on L.CAT_Id = C.CAT_Id
-    inner join CAT_PRIMARIA CP on C.CTP_Id = CP.CTP_Id
-    inner join CAT_SECUNDARIA CS on C.CTS_Id = CS.CTS_Id
+        IF @LBR_Cantidad > 0
+            BEGIN
+                UPDATE LIBROS
+                SET LBR_Cantidad = @LBR_Cantidad -1
+                WHERE LBR_Id = @LBR_Id
+                COMMIT TRANSACTION TR_PRESTAMOS
+            END
+        ELSE
+            BEGIN
+                --sacar en consola el error
+                 PRINT 'No hay libros disponibles'
+            END
+    END
 GO
-DROP VIEW V_LIBROS
 
---EJECTUAR LA VISTA
-SELECT * FROM V_LIBROS
-SELECT * FROM LIBROS
+-------------------------------------------------------------------------------------------------------------------------
+-- Procedimiento almacenado para Insertar un prestamo
+CREATE PROCEDURE SP_InsertarPrestamo(
+    @LBR_Id INT,
+    @PRS_FechaPrestamo DATE,
+    @PRS_FechaDevolucion DATE,
+    @USR_Id CHAR(18)
+    )
+AS
+BEGIN
+    DECLARE
+        @TPR_Id INT,
+        @ETP_Id INT,
+        @DocumentoPrestamo char(18)
 
---Vista que me enseñe que usuarios tiene carnet
+
+    IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = @USR_Id AND EstadoCarnet = 1)
+        BEGIN
+            --traemos el CAR_Id de la tabla CARNET de ese usuario y lo almacenamos en una variable @DocumentoPrestamo
+            SET @DocumentoPrestamo = (SELECT CAR_Id FROM CARNETS WHERE USR_Codigo = @USR_Id)
+            SET @TPR_Id = (SELECT FLOOR(RAND()*(2-1)+1))
+            SET @ETP_Id = (SELECT FLOOR(RAND()*(2-1)+1))
+        end
+
+    ELSE
+        BEGIN
+            --traemos el DNI de la tabla FICHAS_INSCRIPCION de ese usuario y lo almacenamos en una variable @DocumentoPrestamo
+            SET @DocumentoPrestamo = (SELECT FIN_DNI FROM FICHAS_INSCRIPCION WHERE FIN_Id = @USR_Id)
+            SET @TPR_Id = 1
+            SET @ETP_Id = (SELECT FLOOR(RAND()*(2-1)+1))
+        end
+        INSERT INTO PRESTAMOS (LBR_Id, PRS_FechaPrestamo, PRS_FechaDevolucion, USR_Id, TPR_Id, ETP_Id, PRS_DocumentoPrestamo)
+        VALUES (@LBR_Id, @PRS_FechaPrestamo, @PRS_FechaDevolucion, @USR_Id, @TPR_Id, @ETP_Id, @DocumentoPrestamo)
+    END
+GO
+-------------------------------------------------------------------------------------------------------------------------
+DROP PROCEDURE SP_InsertarPrestamo
+
+-- Procedimiento almacenado para Insertar una Inspeccion
+CREATE PROCEDURE SP_InsertarInspeccion(
+    @INS_ESTADO SMALLINT
+    )
+AS
+BEGIN
+
+    IF @INS_ESTADO = 1  IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 2 AND @LBR_Id IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 3 AND @LBR_Id IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 4 AND @LBR_Id IS NOT NULL
+        BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE IF @INS_ESTADO = 5 AND @LBR_Id IS NOT NULL
+          BEGIN
+            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
+            VALUES (@LBR_Id, @INS_ESTADO)
+        END
+    ELSE
+        BEGIN
+            PRINT 'NO EXISTE EL LIBRO'
+        END
+END
 
 
+-- Procedimiento almacenado para la tabla DEVOLUCIONES
+CREATE PROCEDURE SP_InsertarDevolucion(
+    @PRS_Id INT,
+    @INS_Id INT,
+    @DEV_Fecha DATE
+)
+AS
+BEGIN
+    IF EXISTS (SELECT * FROM PRESTAMOS WHERE PRS_Id = @PRS_Id) AND EXISTS (SELECT * FROM INSPECCION WHERE INS_Id = @INS_Id)
+        BEGIN
+            INSERT INTO DEVOLUCIONES (PRS_Id, INS_Id, DEV_Fecha)
+            VALUES (@PRS_Id, @INS_Id, GETDATE())
+        END
+    ELSE
+        BEGIN
+            PRINT 'NO EXISTE EL PRESTAMO O LA INSPECCION'
+        END
+END
+
+-- ejecutar el procedimiento almacenado
+EXEC SP_InsertarDevolucion 1, 4, '2020-12-31'
 
 
+select * from DEVOLUCIONES
 
 
