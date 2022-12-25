@@ -367,11 +367,12 @@ EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',7
 EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',4
 
 -- Insertar datos en la tabla INSPECCION
-EXECUTE SP_InsertarInspeccion 1, 1
-EXECUTE SP_InsertarInspeccion 1, 2
-EXECUTE SP_InsertarInspeccion 1, 3
-EXECUTE SP_InsertarInspeccion 1, 4
-EXECUTE SP_InsertarInspeccion 1, 5
+INSERT  INTO INSPECCION (INS_Estado) VALUES ('Ok')
+INSERT  INTO INSPECCION (INS_Estado) VALUES ('ROTO')
+INSERT  INTO INSPECCION (INS_Estado) VALUES ('FALTAN HOJAS')
+INSERT  INTO INSPECCION (INS_Estado) VALUES ('PERDIDO')
+INSERT  INTO INSPECCION (INS_Estado) VALUES ('MANCHADO')
+
 
 
 

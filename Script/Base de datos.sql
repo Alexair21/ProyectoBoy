@@ -6,6 +6,7 @@ create database Proyecto2;
 
 use Proyecto2;
 
+
 CREATE TABLE AUTOR_LIBRO
 (
 	AUT_Id               int  NOT NULL ,
@@ -157,7 +158,7 @@ go
 
 CREATE TABLE ESTADO_TIPO_PRESTAMO
 (
-	ETP_Id               char(18)  NOT NULL ,
+	ETP_Id               int IDENTITY ( 1,1 ) ,
 	ETP_Descripcion      char(20)  NULL
 )
 go
@@ -182,7 +183,7 @@ CREATE TABLE FICHAS_INSCRIPCION
 	FIN_Foto             varchar(100)  NOT NULL ,
 	FIN_Fecha            date  NOT NULL ,
 	CEN_Id               int  NULL ,
-	FIN_Dni              char(8)  NOT NULL
+	FIN_Dni              char(18)  NULL
 )
 go
 
@@ -197,7 +198,7 @@ go
 CREATE TABLE INSPECCION
 (
 	INS_Id               int IDENTITY ( 1,1 ) ,
-	INS_Estado           smallint  NOT NULL
+	INS_Estado           varchar(15)  NOT NULL
 )
 go
 
@@ -257,10 +258,9 @@ CREATE TABLE PRESTAMOS
 	TPR_Id               int  NOT NULL ,
 	PRS_FechaDevolucion  date  NOT NULL ,
 	USR_Id               int  NOT NULL ,
-	CAR_Id               int  NOT NULL ,
 	PRS_FechaPrestamo    date  NULL ,
-	ETP_Id               char(18)  NULL ,
-	PRS_DocumentoPrestamo char(18)  NULL
+	ETP_Id               int  NULL ,
+	PRS_DocumentosPrestados char(18)  NULL
 )
 go
 
@@ -488,15 +488,6 @@ go
 
 
 ALTER TABLE PRESTAMOS
-	ADD CONSTRAINT R_43 FOREIGN KEY (CAR_Id) REFERENCES CARNETS(CAR_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
-ALTER TABLE PRESTAMOS
 	ADD CONSTRAINT R_93 FOREIGN KEY (ETP_Id) REFERENCES ESTADO_TIPO_PRESTAMO(ETP_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
@@ -533,8 +524,16 @@ go
 
 
 ALTER TABLE RETENCION
-	ADD CONSTRAINT R_98 FOREIGN KEY (DEV_Id) REFERENCES DEVOLUCIONES(DEV_Id)
+	ADD CONSTRAINT R_96 FOREIGN KEY (DEV_Id) REFERENCES DEVOLUCIONES(DEV_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
 
+
+
+
+ALTER TABLE USUARIOS
+	ADD CONSTRAINT R_44 FOREIGN KEY (FIN_Id) REFERENCES FICHAS_INSCRIPCION(FIN_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go

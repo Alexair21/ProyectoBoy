@@ -82,6 +82,7 @@ GO
 
 -------------------------------------------------------------------------------------------------------------------------
 -- Procedimiento almacenado para Insertar un prestamo
+
 CREATE PROCEDURE SP_InsertarPrestamo(
     @LBR_Id INT,
     @PRS_FechaPrestamo DATE,
@@ -111,50 +112,13 @@ BEGIN
             SET @TPR_Id = 1
             SET @ETP_Id = (SELECT FLOOR(RAND()*(2-1)+1))
         end
-        INSERT INTO PRESTAMOS (LBR_Id, PRS_FechaPrestamo, PRS_FechaDevolucion, USR_Id, TPR_Id, ETP_Id, PRS_DocumentoPrestamo)
+        INSERT INTO PRESTAMOS (LBR_Id, PRS_FechaPrestamo, PRS_FechaDevolucion, USR_Id, TPR_Id, ETP_Id, PRS_DocumentosPrestados)
         VALUES (@LBR_Id, @PRS_FechaPrestamo, @PRS_FechaDevolucion, @USR_Id, @TPR_Id, @ETP_Id, @DocumentoPrestamo)
     END
 GO
+
 -------------------------------------------------------------------------------------------------------------------------
-DROP PROCEDURE SP_InsertarPrestamo
 
--- Procedimiento almacenado para Insertar una Inspeccion
-CREATE PROCEDURE SP_InsertarInspeccion(
-    @INS_ESTADO SMALLINT
-    )
-AS
-BEGIN
-
-    IF @INS_ESTADO = 1  IS NOT NULL
-        BEGIN
-            INSERT INTO INSPECCION (INS_ESTADO)
-            VALUES (@LBR_Id, @INS_ESTADO)
-        END
-    ELSE IF @INS_ESTADO = 2 AND @LBR_Id IS NOT NULL
-        BEGIN
-            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
-            VALUES (@LBR_Id, @INS_ESTADO)
-        END
-    ELSE IF @INS_ESTADO = 3 AND @LBR_Id IS NOT NULL
-        BEGIN
-            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
-            VALUES (@LBR_Id, @INS_ESTADO)
-        END
-    ELSE IF @INS_ESTADO = 4 AND @LBR_Id IS NOT NULL
-        BEGIN
-            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
-            VALUES (@LBR_Id, @INS_ESTADO)
-        END
-    ELSE IF @INS_ESTADO = 5 AND @LBR_Id IS NOT NULL
-          BEGIN
-            INSERT INTO INSPECCION (LBR_Id, INS_ESTADO)
-            VALUES (@LBR_Id, @INS_ESTADO)
-        END
-    ELSE
-        BEGIN
-            PRINT 'NO EXISTE EL LIBRO'
-        END
-END
 
 
 -- Procedimiento almacenado para la tabla DEVOLUCIONES
@@ -165,14 +129,14 @@ CREATE PROCEDURE SP_InsertarDevolucion(
 )
 AS
 BEGIN
-    IF EXISTS (SELECT * FROM PRESTAMOS WHERE PRS_Id = @PRS_Id) AND EXISTS (SELECT * FROM INSPECCION WHERE INS_Id = @INS_Id)
+    IF EXISTS (SELECT * FROM PRESTAMOS WHERE PRS_Id = @PRS_Id)
         BEGIN
-            INSERT INTO DEVOLUCIONES (PRS_Id, INS_Id, DEV_Fecha)
-            VALUES (@PRS_Id, @INS_Id, GETDATE())
+            INSERT INTO DEVOLUCIONES (PRS_Id, INS_Id, DEV_FechaDevolucion)
+            VALUES (@PRS_Id, @INS_Id,@DEV_Fecha)
         END
     ELSE
         BEGIN
-            PRINT 'NO EXISTE EL PRESTAMO O LA INSPECCION'
+            PRINT 'NO EXISTE EL PRESTAMO'
         END
 END
 
@@ -182,4 +146,23 @@ EXEC SP_InsertarDevolucion 1, 4, '2020-12-31'
 
 select * from DEVOLUCIONES
 
+-------------------------------------------------------------------------------------------------------------------------
+--TRIGER PARA LLENAR LA TABLA RETENCION EN BASE A LA TABLA DEVOLUCIONES
 
+CREATE TRIGGER TRG_RETENCION
+    ON DEVOLUCIONES
+    FOR INSERT
+AS
+    DECLARE @INS_Id INT
+    SELECT @INS_Id = INS_Id FROM inserted
+    BEGIN
+        IF @INS_Id  >=2 AND @INS_Id  <= 5
+            BEGIN
+                DECLARE
+                    @CAR_Id INT,
+                    @DEV_Id INT
+                SELECT @CAR_Id = CAR_Id FROM CARNETS WHERE USR_Codigo = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
+                SELECT @DEV_Id = DEV_Id FROM inserted
+            END
+    end
+go
