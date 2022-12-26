@@ -3,7 +3,6 @@ USE Proyecto2
 ---------- REPORTING KEVIN ---------------
 
 CREATE PROCEDURE SP_AñoLibroEdtiorial(
-    @Año CHAR(04),
     @Editorial VARCHAR(30)
 )
 AS
@@ -11,25 +10,32 @@ BEGIN
     SELECT DISTINCT
             L.LBR_Id AS [Id],
             L.LBR_Titulo AS [Titulo],
-            CP.CTP_Descripcion AS [Categoria]
+            CP.CTP_Descripcion AS [Categoria],
+           YEAR( L.LBR_AñoPublicacion) AS [Año_Publicacion]
         FROM LIBROS L
     INNER JOIN EDITORIALES E on L.EDT_Id = E.EDT_Id
     INNER JOIN CAT_PRIMARIA CP on L.CTP_Id = CP.CTP_Id
-    WHERE YEAR(L.LBR_AñoPublicacion) = @Año
-        AND E.EDT_Nombre = @Editorial
+    WHERE E.EDT_Nombre = @Editorial
 END
 
 DROP PROCEDURE SP_AñoLibroEdtiorial
 
--- Vista de año
-
-CREATE VIEW VW_Año
+---------- REPORTING GRAFIC ----------------
+CREATE PROCEDURE SP_ResumenLibroEditorial(
+    @Editorial VARCHAR(30)
+)
 AS
-    SELECT DISTINCT
-            YEAR(L.LBR_AñoPublicacion) AS [A�O]
-        FROM LIBROS L
+BEGIN
+    SELECT
+        COUNT(L.LBR_Id) AS [Cantidad_Libros],
+        YEAR( L.LBR_AñoPublicacion) AS [Año_Publicacion]
+    FROM LIBROS L
+    INNER JOIN EDITORIALES E on L.EDT_Id = E.EDT_Id
+    WHERE E.EDT_Nombre = @Editorial
+    GROUP BY YEAR( L.LBR_AñoPublicacion)
+END
 
-SELECT * FROM VW_Año
+DROP PROCEDURE SP_ResumenLibroEditorial
 
 -- Vista de editorial
 
@@ -76,3 +82,23 @@ FROM FICHAS_INSCRIPCION
 GO
 
 SELECT * FROM V_AñoInscripcion
+
+---------- REPORTING GRAFIC ----------------
+CREATE PROCEDURE SP_ResumenUsuarios
+    @Año CHAR(4)
+AS
+    BEGIN
+        SELECT
+            --CONTAR LOS USUARIOS QUE TIENEN ESTADO CARNET 1
+            CASE WHEN U.EstadoCarnet = 1 THEN COUNT(U.USR_Id) END AS [Carnet],
+            --CONTAR LOS USUARIOS QUE TIENEN ESTADO CARNET 0
+            CASE WHEN U.EstadoCarnet = 0 THEN COUNT(U.USR_Id) END AS [DNI]
+
+            FROM USUARIOS U
+            INNER JOIN FICHAS_INSCRIPCION FI on U.FIN_Id = FI.FIN_Id
+            WHERE YEAR(FI.FIN_Fecha) = @Año
+        GROUP BY U.EstadoCarnet
+
+    end
+
+DROP PROCEDURE SP_ResumenUsuarios

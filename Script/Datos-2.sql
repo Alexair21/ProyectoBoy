@@ -1,4 +1,4 @@
-use Proyecto2;
+USE Proyecto2
 
 --Datos de editoriales
 insert into EDITORIALES (EDT_Nombre) values ('Planeta');
@@ -362,7 +362,6 @@ INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Cel
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Rocio Rodriguez Jimenez', 'Avenida 2 de mayo #123', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2017-01-01', 2, '72899283')
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Diego Huamanjulca Guerrero', 'Calle 16', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2018-01-01', 1, '72899283')
 
-
 -- Insertar datos en la tabla INSPECCION
 INSERT  INTO INSPECCION (INS_Estado) VALUES ('Ok')
 INSERT  INTO INSPECCION (INS_Estado) VALUES ('ROTO')
@@ -403,6 +402,7 @@ SELECT * FROM TIPOS_PRESTAMO
 SELECT * FROM CARNETS
 SELECT * FROM FICHAS_INSCRIPCION
 SELECT * FROM INSPECCION
+SELECT * FROM EDITORIALES
 
 select * from devoluciones
 select * from RETENCION

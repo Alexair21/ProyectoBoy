@@ -4,80 +4,75 @@
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource1">
-      <DataSourceReference>DS_Usuarios</DataSourceReference>
+      <DataSourceReference>DSourceProyecto</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>eaf7296f-18a2-4339-a12b-4f95ec4a1521</rd:DataSourceID>
+      <rd:DataSourceID>2191de1e-f08d-4d75-ac81-2e099f37e914</rd:DataSourceID>
     </DataSource>
-    <DataSource Name="DataSource2">
-      <DataSourceReference>DS_Usuarios</DataSourceReference>
+    <DataSource Name="DSourceResumenLibroAño">
+      <DataSourceReference>DSourceProyecto</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>95df864a-8fd1-4c49-a96a-a81120413ee1</rd:DataSourceID>
-    </DataSource>
-    <DataSource Name="DataSource3">
-      <DataSourceReference>DS_Usuarios</DataSourceReference>
-      <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>0d3dd662-7d40-4e85-9d9c-c11437b4c00d</rd:DataSourceID>
+      <rd:DataSourceID>2e016c82-ed29-4b0f-bf3e-5b36b3110064</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet1">
+    <DataSet Name="DataSetLibroEditorial">
       <SharedDataSet>
-        <SharedDataSetReference>DSUsuarios</SharedDataSetReference>
+        <SharedDataSetReference>DataSetAñoLibroEditorial</SharedDataSetReference>
         <QueryParameters>
-          <QueryParameter Name="@Año">
-            <Value>=Parameters!Año.Value</Value>
+          <QueryParameter Name="@Editorial">
+            <Value>=Parameters!Editorial.Value</Value>
           </QueryParameter>
         </QueryParameters>
       </SharedDataSet>
       <Fields>
-        <Field Name="ID">
-          <DataField>ID</DataField>
+        <Field Name="Id">
+          <DataField>Id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Nombres_y_Apellidos">
-          <DataField>Nombres_y_Apellidos</DataField>
+        <Field Name="Titulo">
+          <DataField>Titulo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="EMAIL">
-          <DataField>EMAIL</DataField>
+        <Field Name="Categoria">
+          <DataField>Categoria</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Tipo_de_Documento_de_Prestamo">
-          <DataField>Tipo_de_Documento_de_Prestamo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Año_Publicacion">
+          <DataField>Año_Publicacion</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DataSetAño">
+    <DataSet Name="DataSetEditorial">
       <Query>
-        <DataSourceName>DataSource2</DataSourceName>
-        <CommandText>SELECT * FROM V_AñoInscripcion</CommandText>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT * FROM VW_Editorial</CommandText>
       </Query>
       <Fields>
-        <Field Name="Año">
-          <DataField>Año</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="EDITORIAL">
+          <DataField>EDITORIAL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DataSet2">
+    <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>DataSource3</DataSourceName>
+        <DataSourceName>DSourceResumenLibroAño</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="@Año">
-            <Value>=Parameters!Año.Value</Value>
+          <QueryParameter Name="@Editorial">
+            <Value>=Parameters!Editorial.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <CommandType>StoredProcedure</CommandType>
-        <CommandText>SP_ResumenUsuarios</CommandText>
+        <CommandText>SP_ResumenLibroEditorial</CommandText>
       </Query>
       <Fields>
-        <Field Name="Carnet">
-          <DataField>Carnet</DataField>
+        <Field Name="Cantidad_Libros">
+          <DataField>Cantidad_Libros</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="DNI">
-          <DataField>DNI</DataField>
+        <Field Name="Año_Publicacion">
+          <DataField>Año_Publicacion</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
@@ -87,36 +82,36 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Tablix Name="Tablix2">
+          <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.6695cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.68017cm</Width>
+                  <Width>8.74683cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.44733cm</Width>
+                  <Width>4.527cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.01366cm</Width>
+                  <Width>3.93933cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.81167cm</Height>
+                  <Height>0.8509cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox7">
+                        <Textbox Name="Textbox1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ID</Value>
+                                  <Value>Id</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>Blue</Color>
@@ -128,7 +123,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -144,14 +139,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox9">
+                        <Textbox Name="Textbox3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Nombres y Apellidos</Value>
+                                  <Value>Titulo</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>Blue</Color>
@@ -163,7 +158,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox9</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -179,14 +174,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox11">
+                        <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>EMAIL</Value>
+                                  <Value>Categoria</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Color>Blue</Color>
@@ -198,7 +193,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox11</rd:DefaultName>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -214,14 +209,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox13">
+                        <Textbox Name="Textbox8">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tipo de Documento de Prestamo</Value>
+                                  <Value>Año Publicacion</Value>
                                   <Style>
                                     <FontFamily>Arial</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -234,7 +229,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <rd:DefaultName>Textbox8</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -251,116 +246,20 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.854cm</Height>
+                  <Height>0.8509cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ID">
+                        <Textbox Name="Id">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ID.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>ID</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Nombres_y_Apellidos">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Nombres_y_Apellidos.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Nombres_y_Apellidos</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="EMAIL">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!EMAIL.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>EMAIL</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Tipo_de_Documento_de_Prestamo">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Tipo_de_Documento_de_Prestamo.Value</Value>
+                                  <Value>=Fields!Id.Value</Value>
                                   <Style>
-                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>9pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -369,7 +268,110 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Tipo_de_Documento_de_Prestamo</rd:DefaultName>
+                          <rd:DefaultName>Id</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Titulo">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Titulo.Value</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Titulo</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Categoria">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Categoria.Value</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Categoria</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Año_Publicacion">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Año_Publicacion.Value</Value>
+                                  <Style>
+                                    <FontFamily>Arial</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Año_Publicacion</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -405,43 +407,40 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSet1</DataSetName>
-            <Top>2.89137cm</Top>
-            <Left>5.0292cm</Left>
-            <Height>1.66567cm</Height>
-            <Width>17.64116cm</Width>
+            <DataSetName>DataSetLibroEditorial</DataSetName>
+            <Top>3.5052cm</Top>
+            <Left>1.0922cm</Left>
+            <Height>1.7018cm</Height>
+            <Width>18.88267cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox15">
+          <Textbox Name="Textbox7">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Reporte de usuarios por año de inscripcion</Value>
+                    <Value>REPORTE DE LIBROS CON SU EDITORIAL Y SU AÑO</Value>
                     <Style>
-                      <FontStyle>Italic</FontStyle>
-                      <FontSize>20pt</FontSize>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Color>Red</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
+                <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>1.3462cm</Top>
-            <Left>5.0292cm</Left>
-            <Height>0.99483cm</Height>
-            <Width>18.161cm</Width>
+            <rd:DefaultName>Textbox7</rd:DefaultName>
+            <Top>1.76953cm</Top>
+            <Left>4.41537cm</Left>
+            <Height>0.83283cm</Height>
+            <Width>11.136cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -453,85 +452,53 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Chart Name="Chart2">
+          <Chart Name="Chart1">
             <ChartCategoryHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label />
+                  <Group Name="Chart1_CategoryGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Año_Publicacion.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Año_Publicacion.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!Año_Publicacion.Value</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartCategoryHierarchy>
             <ChartSeriesHierarchy>
               <ChartMembers>
                 <ChartMember>
-                  <Label>Carnet</Label>
-                </ChartMember>
-                <ChartMember>
-                  <Label>DNI</Label>
+                  <Label>Cantidad Libros</Label>
                 </ChartMember>
               </ChartMembers>
             </ChartSeriesHierarchy>
             <ChartData>
               <ChartSeriesCollection>
-                <ChartSeries Name="Carnet">
+                <ChartSeries Name="Cantidad_Libros">
                   <ChartDataPoints>
                     <ChartDataPoint>
                       <ChartDataPointValues>
-                        <Y>=Sum(Fields!Carnet.Value)</Y>
+                        <Y>=Sum(Fields!Cantidad_Libros.Value)</Y>
                       </ChartDataPointValues>
                       <ChartDataLabel>
                         <Style />
                         <UseValueAsLabel>true</UseValueAsLabel>
                         <Visible>true</Visible>
                       </ChartDataLabel>
-                      <Style>
-                        <Color>Khaki</Color>
-                      </Style>
+                      <Style />
                       <ChartMarker>
                         <Style />
                       </ChartMarker>
                       <DataElementOutput>Output</DataElementOutput>
                     </ChartDataPoint>
                   </ChartDataPoints>
-                  <Type>Bar</Type>
-                  <Style />
-                  <ChartEmptyPoints>
-                    <Style />
-                    <ChartMarker>
-                      <Style />
-                    </ChartMarker>
-                    <ChartDataLabel>
-                      <Style />
-                    </ChartDataLabel>
-                  </ChartEmptyPoints>
-                  <ValueAxisName>Primary</ValueAxisName>
-                  <CategoryAxisName>Primary</CategoryAxisName>
-                  <ChartSmartLabel>
-                    <CalloutLineColor>Black</CalloutLineColor>
-                    <MinMovingDistance>0pt</MinMovingDistance>
-                  </ChartSmartLabel>
-                </ChartSeries>
-                <ChartSeries Name="DNI">
-                  <ChartDataPoints>
-                    <ChartDataPoint>
-                      <ChartDataPointValues>
-                        <Y>=Sum(Fields!DNI.Value)</Y>
-                      </ChartDataPointValues>
-                      <ChartDataLabel>
-                        <Style />
-                        <UseValueAsLabel>true</UseValueAsLabel>
-                        <Visible>true</Visible>
-                      </ChartDataLabel>
-                      <Style>
-                        <Color>Turquoise</Color>
-                      </Style>
-                      <ChartMarker>
-                        <Style />
-                      </ChartMarker>
-                      <DataElementOutput>Output</DataElementOutput>
-                    </ChartDataPoint>
-                  </ChartDataPoints>
-                  <Type>Bar</Type>
+                  <Type>Shape</Type>
+                  <Subtype>ExplodedPie</Subtype>
                   <Style />
                   <ChartEmptyPoints>
                     <Style />
@@ -777,6 +744,9 @@
                     </ChartAxisScaleBreak>
                   </ChartAxis>
                 </ChartValueAxes>
+                <ChartThreeDProperties>
+                  <Enabled>true</Enabled>
+                </ChartThreeDProperties>
                 <Style>
                   <BackgroundColor>#00ffffff</BackgroundColor>
                   <BackgroundGradientType>None</BackgroundGradientType>
@@ -789,7 +759,6 @@
                   <BackgroundGradientType>None</BackgroundGradientType>
                   <FontSize>8pt</FontSize>
                 </Style>
-                <Position>TopLeft</Position>
                 <ChartLegendTitle>
                   <Caption />
                   <Style>
@@ -803,15 +772,13 @@
               </ChartLegend>
             </ChartLegends>
             <ChartTitles>
-              <ChartTitle Name="Default">
-                <Caption>Tipos de documentos para prestamo</Caption>
+              <ChartTitle Name="Title1">
+                <Caption>Cantidad Libros x Año</Caption>
                 <Style>
                   <BackgroundGradientType>None</BackgroundGradientType>
-                  <FontSize>16pt</FontSize>
                   <FontWeight>Bold</FontWeight>
-                  <TextAlign>Left</TextAlign>
+                  <TextAlign>General</TextAlign>
                   <VerticalAlign>Top</VerticalAlign>
-                  <Color>Red</Color>
                 </Style>
               </ChartTitle>
             </ChartTitles>
@@ -832,11 +799,11 @@
                 <VerticalAlign>Top</VerticalAlign>
               </Style>
             </ChartNoDataMessage>
-            <DataSetName>DataSet2</DataSetName>
-            <Top>1.64987cm</Top>
-            <Left>23.99453cm</Left>
-            <Height>7.20133cm</Height>
-            <Width>11.01367cm</Width>
+            <DataSetName>DataSet1</DataSetName>
+            <Top>2.2352cm</Top>
+            <Left>21.96253cm</Left>
+            <Height>5cm</Height>
+            <Width>7.5cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -848,10 +815,10 @@
             </Style>
           </Chart>
         </ReportItems>
-        <Height>4.05972in</Height>
+        <Height>3.71667in</Height>
         <Style />
       </Body>
-      <Width>13.78276in</Width>
+      <Width>12.55in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -865,14 +832,14 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="Año">
+    <ReportParameter Name="Editorial">
       <DataType>String</DataType>
-      <Prompt>Año</Prompt>
+      <Prompt>Editorial</Prompt>
       <ValidValues>
         <DataSetReference>
-          <DataSetName>DataSetAño</DataSetName>
-          <ValueField>Año</ValueField>
-          <LabelField>Año</LabelField>
+          <DataSetName>DataSetEditorial</DataSetName>
+          <ValueField>EDITORIAL</ValueField>
+          <LabelField>EDITORIAL</LabelField>
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
@@ -885,11 +852,11 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>Año</ParameterName>
+          <ParameterName>Editorial</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>5a00d895-c224-44b7-aea8-8930597e2875</rd:ReportID>
+  <rd:ReportID>c727d331-bce7-48fa-8d24-a2414f49453c</rd:ReportID>
 </Report>
