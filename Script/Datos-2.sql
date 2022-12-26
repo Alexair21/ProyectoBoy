@@ -365,6 +365,7 @@ INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Cel
 
 EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',7
 EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',4
+EXEC SP_InsertarPrestamo 3,  '2022-12-25', '2022-12-26',5
 
 -- Insertar datos en la tabla INSPECCION
 INSERT  INTO INSPECCION (INS_Estado) VALUES ('Ok')
@@ -372,10 +373,6 @@ INSERT  INTO INSPECCION (INS_Estado) VALUES ('ROTO')
 INSERT  INTO INSPECCION (INS_Estado) VALUES ('FALTAN HOJAS')
 INSERT  INTO INSPECCION (INS_Estado) VALUES ('PERDIDO')
 INSERT  INTO INSPECCION (INS_Estado) VALUES ('MANCHADO')
-
-
-
-
 -- Muestra de datos de las tablas
 
 SELECT * FROM USUARIOS
@@ -385,3 +382,11 @@ SELECT * FROM TIPOS_PRESTAMO
 SELECT * FROM CARNETS
 SELECT * FROM FICHAS_INSCRIPCION
 SELECT * FROM INSPECCION
+
+EXEC SP_InsertarDevolucion 1,3,'2022-12-27'
+EXEC SP_InsertarDevolucion 3,2,'2022-12-26'
+EXEC SP_InsertarDevolucion 4,2,'2022-12-29'
+
+select * from devoluciones
+select * from RETENCION
+select * from MULTAS

@@ -122,6 +122,8 @@ GO
 
 
 -- Procedimiento almacenado para la tabla DEVOLUCIONES
+
+
 CREATE PROCEDURE SP_InsertarDevolucion(
     @PRS_Id INT,
     @INS_Id INT,
@@ -139,13 +141,6 @@ BEGIN
             PRINT 'NO EXISTE EL PRESTAMO'
         END
 END
-
--- ejecutar el procedimiento almacenado
-EXEC SP_InsertarDevolucion 1, 4, '2020-12-31'
-
-
-select * from DEVOLUCIONES
-
 -------------------------------------------------------------------------------------------------------------------------
 --TRIGER PARA LLENAR LA TABLA RETENCION EN BASE A LA TABLA DEVOLUCIONES
 
@@ -156,13 +151,69 @@ AS
     DECLARE @INS_Id INT
     SELECT @INS_Id = INS_Id FROM inserted
     BEGIN
+
+        DECLARE
+            @CAR_Id INT,
+            @DEV_Id INT,
+
+            @PRS_Id INT,
+            @MUL_Monto MONEY,
+            @MUL_Fecha DATE,
+            @USR_Id INT,
+            @DEV_FechaDevolucion DATE,
+            @Resta_Fechas INT,
+            @MUL_MONTO2 MONEY
+        ----------------------------------------------------------------------------------------------
+        --Si la inpeccion esta entre 2 a 5
         IF @INS_Id  >=2 AND @INS_Id  <= 5
             BEGIN
-                DECLARE
-                    @CAR_Id INT,
-                    @DEV_Id INT
-                SELECT @CAR_Id = CAR_Id FROM CARNETS WHERE USR_Codigo = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
+                --SI EstadoCarnet del Usuario es igual a 1 entonces se toma el CAR_Id de la tabla CARNETS
+                IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)) AND EstadoCarnet = 1)
+                    BEGIN
+                        SET @CAR_Id = (SELECT CAR_Id FROM CARNETS WHERE USR_Codigo = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)))
+                    END
+                ELSE
+                    BEGIN
+                        SET @CAR_Id = NULL
+                    END
+
                 SELECT @DEV_Id = DEV_Id FROM inserted
+                INSERT INTO RETENCION (DEV_Id,CAR_Id)  VALUES (@DEV_Id,@CAR_Id)
+
+                -- Insercion de multas
+
+                SELECT @DEV_FechaDevolucion = DEV_FechaDevolucion FROM inserted
+                SELECT @PRS_Id = PRS_Id FROM inserted
+                SELECT @Resta_Fechas = DATEDIFF(DAY, (SELECT PRS_FechaPrestamo FROM PRESTAMOS WHERE PRS_Id = @PRS_Id), @DEV_FechaDevolucion)
+
+                SET @MUL_Monto = 30
+
+                IF @Resta_Fechas >= 1
+                    BEGIN
+                        SET @MUL_Monto =@MUL_Monto + (@Resta_Fechas * 2)
+                    END
+
+                SET @MUL_Fecha = GETDATE()
+                SET @USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = @PRS_Id)
+
+                INSERT INTO MULTAS (PRS_Id, MUL_Monto, MUL_Fecha, USR_Id) VALUES (@PRS_Id, @MUL_Monto, @MUL_Fecha, @USR_Id)
             END
-    end
-go
+        --------------------------------------------------------------------------------------------------------------------------------
+
+        --SI EstadoCarnet del Usuario es igual a 1 entonces actualizamos el estado del carnet a 1
+
+        IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)) AND EstadoCarnet = 1)
+            BEGIN
+                UPDATE CARNETS
+                SET CAR_Retenido = 1
+                WHERE USR_Codigo = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
+            END
+
+        UPDATE LIBROS
+        SET LBR_Cantidad = LBR_Cantidad + 1
+        WHERE LBR_Id = (SELECT LBR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
+
+    END
+GO
+
+DROP TRIGGER TRG_RETENCION
