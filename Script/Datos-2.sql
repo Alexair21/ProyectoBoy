@@ -237,12 +237,12 @@ insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPubli
 
 -- Categoria 4
 insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00008', 'Psicologia: El comienzo', '360-5171-82-6', '1', '2016', 4, 17, 4, 15);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00009', N'Niños y su conducta', '212-4291-21-0', '2', '2017', 1, 18, 4, 10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00009', N'Niños y su conducta', '212-4291-21-0', '2', '2017', 3, 18, 4, 10);
 
 -- Categoria 5
 insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00010', 'Movimiento Rectilinio Uniforme', '123-9210-72-8', '1', '2018', 2, 21, 5, 9);
 insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00011', 'Fisica II: Espejismos', '111-5165-12-1', '1', '2011', 3, 22, 5, 7);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', 'Fisica Cuantica en Computadoras', '301-6981-21-0', '4', '2012', 1, 23, 5, 10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', 'Fisica Cuantica en Computadoras', '301-6981-21-0', '4', '2012', 4, 23, 5, 10);
 
 -- Categoria 6
 insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', 'Quimica Organica: Alcanos y Alquenos', '016-4131-02-1', '5', '2015', 2, 25, 6, 10);
