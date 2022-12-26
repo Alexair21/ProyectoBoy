@@ -10,18 +10,6 @@ insert into EDITORIALES (EDT_Nombre) values ('Oceano');
 insert into EDITORIALES (EDT_Nombre) values ('Penguin');
 insert into EDITORIALES (EDT_Nombre) values ('Debolsillo');
 insert into EDITORIALES (EDT_Nombre) values ('Piramide');
-insert into EDITORIALES (EDT_Nombre) values ('Parramon');
-insert into EDITORIALES (EDT_Nombre) values ('Salamandra');
-insert into EDITORIALES (EDT_Nombre) values ('Minotauro');
-insert into EDITORIALES (EDT_Nombre) values ('Alfaguara Infantil');
-insert into EDITORIALES (EDT_Nombre) values ('Alfaguara Juvenil');
-insert into EDITORIALES (EDT_Nombre) values ('Alfaguara Universitaria');
-insert into EDITORIALES (EDT_Nombre) values ('Alfaguara Clasicos');
-insert into EDITORIALES (EDT_Nombre) values ('Marte');
-insert into EDITORIALES (EDT_Nombre) values ('El chepenano');
-insert into EDITORIALES (EDT_Nombre) values ('El pacasmayino');
-insert into EDITORIALES (EDT_Nombre) values ('El cusqueño');
-insert into EDITORIALES (EDT_Nombre) values ('El arequipeño');
 
 
 ----------------------------------------------------------------
