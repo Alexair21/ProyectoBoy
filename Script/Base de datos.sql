@@ -7,6 +7,7 @@ create database Proyecto2;
 use Proyecto2;
 
 
+
 CREATE TABLE AUTOR_LIBRO
 (
 	AUT_Id               int  NOT NULL ,
@@ -338,8 +339,8 @@ go
 CREATE TABLE USUARIOS
 (
 	USR_Id               int IDENTITY ( 1,1 ) ,
-	FIN_Id               int  NOT NULL ,
-	EstadoCarnet         smallint  NULL
+	EstadoCarnet         smallint  NULL ,
+	FIN_Id               int  NULL
 )
 go
 
@@ -528,3 +529,13 @@ ALTER TABLE RETENCION
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
+
+
+
+
+ALTER TABLE USUARIOS
+	ADD CONSTRAINT R_98 FOREIGN KEY (FIN_Id) REFERENCES FICHAS_INSCRIPCION(FIN_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+

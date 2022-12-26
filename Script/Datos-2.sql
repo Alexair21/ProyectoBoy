@@ -382,13 +382,16 @@ EXEC SP_InsertarPrestamo 8,  '2022-12-25', '2022-12-26',10
 EXEC SP_InsertarPrestamo 9,  '2022-12-11', '2022-12-12',11
 EXEC SP_InsertarPrestamo 10, '2022-12-25', '2022-12-26',12
 EXEC SP_InsertarPrestamo 11, '2022-12-05', '2022-12-06',13
-
 EXEC SP_InsertarPrestamo 10, '2022-12-15', '2022-12-16',1
 EXEC SP_InsertarPrestamo 5, '2022-12-15', '2022-12-16',1
 EXEC SP_InsertarPrestamo 18, '2022-12-05', '2022-12-06',2
 EXEC SP_InsertarPrestamo 10, '2022-12-20', '2022-12-21',2
 
-
+--Insertamos devoluciones
+EXEC SP_InsertarDevolucion 1,1,'2022-12-27'
+EXEC SP_InsertarDevolucion 3,2,'2022-12-26'
+EXEC SP_InsertarDevolucion 4,5,'2022-12-29'
+EXEC SP_InsertarDevolucion 1,1,'2022-12-24'
 
 -- Muestra de datos de las tablas
 
@@ -399,11 +402,6 @@ SELECT * FROM TIPOS_PRESTAMO
 SELECT * FROM CARNETS
 SELECT * FROM FICHAS_INSCRIPCION
 SELECT * FROM INSPECCION
-
-EXEC SP_InsertarDevolucion 1,1,'2022-12-27'
-EXEC SP_InsertarDevolucion 3,2,'2022-12-26'
-EXEC SP_InsertarDevolucion 4,5,'2022-12-29'
-EXEC SP_InsertarDevolucion 1,1,'2022-12-24'
 
 select * from devoluciones
 select * from RETENCION
