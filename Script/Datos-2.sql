@@ -6,10 +6,7 @@ insert into EDITORIALES (EDT_Nombre) values ('Santillana');
 insert into EDITORIALES (EDT_Nombre) values ('Norma');
 insert into EDITORIALES (EDT_Nombre) values ('Alfaguara');
 insert into EDITORIALES (EDT_Nombre) values ('Anaya');
-insert into EDITORIALES (EDT_Nombre) values ('Oceano');
-insert into EDITORIALES (EDT_Nombre) values ('Penguin');
-insert into EDITORIALES (EDT_Nombre) values ('Debolsillo');
-insert into EDITORIALES (EDT_Nombre) values ('Piramide');
+
 
 
 ----------------------------------------------------------------
@@ -223,48 +220,64 @@ insert into TIPOS_USUARIO (TUS_Nombre) values ('Ocasional');
 --Datos de Libros
 
 -- Categoria 1
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, LBR_Cantidad) values ('00001', 'Limites al infinito I', '312-7281-72-1', '3', '2015', 1, 1, 1, 15);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00002', 'Integral Definida', '314-7270-80-2', '1', '2020', 2, 2, 1, 10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values ('00001', 'Limites al infinito I', '312-7281-72-1', '3', '2010', 1, 1, 1, 15);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00002', 'Integral Definida', '314-7270-80-2', '1', '2011', 2, 2, 1, 10);
 
 -- Categoria 2
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00003', 'POO II', '342-6281-92-1', '8', '2019', 3, 8, 2, 20);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00004', N'Introducción a SQL Server', '422-5231-72-4', '3', '2020', 1,9, 2, 5);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00003', 'POO II', '342-6281-92-1', '8', '2012', 3, 8, 2, 20);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00004', N'Introducción a SQL Server', '422-5231-72-4', '3', '2013', 4,9, 2, 5);
 
 -- Categoria 3
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00005', 'Sistema Digestivo I', '370-7281-72-5', '1', '2005', 3, 11, 3, 20);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00006', N'Farmacia Clínica I', '312-7281-72-1', '2', '2015', 2, 14, 3, 15);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00007', N'Genética II', '792-1221-72-6', '4', '2021', 1, 16, 3, 7);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00005', 'Sistema Digestivo I', '370-7281-72-5', '1', '2014', 5, 11, 3, 20);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00006', N'Farmacia Clínica I', '312-7281-72-1', '2', '2015', 1, 14, 3, 15);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00007', N'Genética II', '792-1221-72-6', '4', '2010', 2, 16, 3, 7);
 
 -- Categoria 4
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00008', 'Psicologia: El comienzo', '360-5171-82-6', '1', '2016', 4, 17, 4, 15);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00009', N'Niños y su conducta', '212-4291-21-0', '2', '2017', 3, 18, 4, 10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00008', 'Psicologia: El comienzo', '360-5171-82-6', '1', '2011', 3, 17, 4, 15);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00009', N'Niños y su conducta', '212-4291-21-0', '2', '2012', 4, 18, 4, 10);
 
 -- Categoria 5
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00010', 'Movimiento Rectilinio Uniforme', '123-9210-72-8', '1', '2018', 2, 21, 5, 9);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00011', 'Fisica II: Espejismos', '111-5165-12-1', '1', '2011', 3, 22, 5, 7);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', 'Fisica Cuantica en Computadoras', '301-6981-21-0', '4', '2012', 4, 23, 5, 10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00010', 'Movimiento Rectilinio Uniforme', '123-9210-72-8', '1', '2013', 5, 21, 5, 9);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00011', 'Fisica II: Espejismos', '111-5165-12-1', '1', '2014', 1, 22, 5, 7);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', 'Fisica Cuantica en Computadoras', '301-6981-21-0', '4', '2015', 2, 23, 5, 10);
 
 -- Categoria 6
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', 'Quimica Organica: Alcanos y Alquenos', '016-4131-02-1', '5', '2015', 2, 25, 6, 10);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00014', 'Quimica Inorganica: Metales y No metales', '142-5121-02-7', '1', '2019', 6, 26, 6, 11);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', 'Quimica Organica: Alcanos y Alquenos', '016-4131-02-1', '5', '2010', 3, 25, 6, 10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00014', 'Quimica Inorganica: Metales y No metales', '142-5121-02-7', '1', '2011', 4, 26, 6, 11);
 
 -- Categoria 7
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', 'La celula y sus partes', '312-7281-72-2', '4', '2011', 5, 29, 7, 16);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', 'Procariotas y Eucariotas', '311-0083-62-3', '2', '2007', 7, 30,7, 20);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00015', 'La celula y sus partes', '312-7281-72-2', '4', '2012', 5, 29, 7, 16);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00016', 'Procariotas y Eucariotas', '311-0083-62-3', '2', '2013', 1, 30,7, 20);
 
 -- Categoria 8
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', N'Economía: Macroeconomía', '312-7281-72-2', '4', '2011', 1, 33, 8, 16);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', N'Economía: Microeconomía', '311-0083-62-3', '2', '2007', 7, 34, 8,10);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', 'Finanzas Corporativas', '512-7131-02-0', '3', '2010', 1, 36, 8, 15);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00017', N'Economía: Macroeconomía', '312-7281-72-2', '4', '2014', 2, 33, 8, 16);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00018', N'Economía: Microeconomía', '311-0083-62-3', '2', '2015', 3, 34, 8,10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00019', 'Finanzas Corporativas', '512-7131-02-0', '3', '2010', 4, 36, 8, 15);
 
 -- Categoria 9
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', N'Derecho y Ciudadanía', '702-5101-12-0', '1', '2011', 1, 38, 9, 20);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', N'Constitución política del Perú', '931-7201-22-3', '6', '2012', 4, 39, 9, 10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00020', N'Derecho y Ciudadanía', '702-5101-12-0', '1', '2011', 1, 38, 9, 20);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00021', N'Constitución política del Perú', '931-7201-22-3', '6', '2012', 2, 39, 9, 10);
 
 -- Categoria 10
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00012', N'Tácticas con balón parado', '109-1418-12-5', '6', '2020', 5, 42, 10, 12);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', N'El reglamento oficial', '302-1243-62-7', '1', '2015', 4, 43,10,13);
-insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00013', N'El arte de jugar voleyball', '311-0321-12-4', '5', '2014', 1, 44,10,10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00022', N'Tácticas con balón parado', '109-1418-12-5', '6', '2013', 3, 42, 10, 12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00023', N'El reglamento oficial', '302-1243-62-7', '1', '2014', 4, 43,10,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00024', N'El arte de jugar voleyball', '311-0321-12-4', '5', '2015', 5, 44,10,10)
+
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00025', N'Las Aventuras del principe David', '109-1418-12-5', '6', '2010', 1, 42, 10, 12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00026', N'Pelear con dinosarios: EL regreso de T-rex', '302-1243-62-7', '1', '2011', 2, 48,12,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00027', N'Hadas: El universo mágico', '311-0321-12-4', '5', '2012', 3, 49,13,10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00028', N'La historia del Perú', '109-1418-12-5', '6', '2013', 4, 50, 14, 12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00029', N'Condorito 3: La juerga', '302-1243-62-7', '1', '2014', 5, 51,15,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00030', N'Big mouth: El cofre magico', '311-0321-12-4', '5', '2015', 1, 47,11,10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00031', N'Rayos Láser', '109-1418-12-5', '6', '2010', 2, 48, 12, 12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00032', N'Pandas Voladores: El regreso', '302-1243-62-7', '1', '2011', 3, 49,13,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00033', N'Historia de la república Argentina', '311-0321-12-4', '5', '2012', 4, 50,14,10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00034', N'Condorito 2', '109-1418-12-5', '6', '2013', 5, 51, 15, 12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00035', N'La aventura de Jaimito', '302-1243-62-7', '1', '2014', 1, 47,11,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00036', N'Teletransportación', '311-0321-12-4', '5', '2015', 2, 48,12,10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00037', N'Unicornios: My Little pony', '109-1418-12-5', '6', '2010', 3, 49, 13, 12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00038', N'La historia de José de San Martin', '302-1243-62-7', '1', '2011', 4, 50,14,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00039', N'Condorito: El ñato', '311-0321-12-4', '5', '2012', 5, 51,15,10);
 
 
 -- Datos Autor_Libro
