@@ -31,7 +31,7 @@ CREATE TABLE AUTORES
 	AUT_Direccion        varchar(40)  NOT NULL ,
 	AUT_Telefono         char(10)  NOT NULL ,
 	AUT_Email            varchar(40)  NOT NULL ,
-	AUT_Nacionalidad     char(02)  NOT NULL
+	AUT_Nacionalidad     varchar(30)  NOT NULL
 )
 go
 

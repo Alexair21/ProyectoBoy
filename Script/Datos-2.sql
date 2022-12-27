@@ -192,12 +192,18 @@ insert into CATEGORIAS (CTP_Id) values (21);
 ----------------------------------------------------------------------
 
 --Datos de autores
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00001', 'Juan Perez', 'Calle 1', '985456987', 'juan@gmail.com', 'PE');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00002', 'Maria Lopez', 'Calle 2', '987298635', 'maria@gmail.com', 'AR');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00003', 'Pedro Gomez', 'Calle 3', '978147357', 'ejemplo1@mail.com', 'EC');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00004', 'Luisa Rodriguez', 'Calle 4', '987456123', 'ejemplo2@gmail.com', 'CH');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00005', 'Carlos Sanchez', 'Calle 5', '987456786', 'ejemplo3@gmail.com', 'PE');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', 'Jose Torres', 'Calle 6', '987456123', 'ejemplo4@gmail.com', 'PE');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00001', 'Juan Perez', 'Av. Mariposas #31', '985456987', 'juan@gmail.com', N'Perú');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00002', 'Maria Lopez', 'Av.Girasoles #42', '987298635', 'maria@gmail.com', 'Argentina');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00003', 'Pedro Gomez', 'Av. Tulipanes #10', '978147357', 'pedro1@mail.com', 'Ecuador');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00004', 'Luisa Rodriguez', 'Calle San Francisco', '987456123', 'luisa3@gmail.com', 'Colombia');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00005', 'Carl Muller', N'Av. Hormigón #21', '987456786', 'carlos1@gmail.com', 'Alemania');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', 'Jose Terrones', N'Plaza Sésamo', '987456123', 'jose21@gmail.com', N'Perú');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Claudia Méndez', 'Calle Rosales #10', '987456123', 'claudia12@gmail.com', 'Chile');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Albert Frankz', 'Av. Rosales #15', '957675612', 'albert12@gmail.com', 'Estados Unidos');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Rocío Casillas', 'Calle Platanos #11', '987456123', 'rocio11@gmail.com', N'España');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Wendy Ortinola', 'Av. Pamplona #15', '957575712', 'wen_orti1@gmail.com', N'Perú');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Mario Vargas Llosa', 'Calle Zapallo #11', '917156923', 'mario_var12@gmail.com', N'Perú');
+
 
 ----------------------------------------------------------------------
 --Datos de centros de trabajo
@@ -280,30 +286,59 @@ insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPubli
 insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00039', N'Condorito: El ñato', '311-0321-12-4', '5', '2012', 5, 51,15,10);
 
 
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00040', N'Romeo y Julieta', '109-1418-12-5', '6', '2013', 1, 52,16,12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00041', N'Antología', '302-1243-62-7', '1', '2014', 2, 53,17,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00042', N'Gegografía y biodiversidad del Perú', '311-0321-12-4', '5', '2015', 3, 54,18,10);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00043', N'Reina Valera: Antiguo Testamento', '109-1418-12-5', '6', '2010', 4, 55,19,12);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00044', N'Platón: Su filosofía desde el inicio', '302-1243-62-7', '1', '2011', 5, 56,20,13);
+insert into LIBROS (LBR_Codigo, LBR_Titulo, LBR_ISBN, LBR_Edicion, LBR_AñoPublicacion, EDT_Id, CAT_Id, CTP_Id, LBR_Cantidad) values('00045', N'Introducción al piano', '311-0321-12-4', '5', '2012', 1, 57,21,10);
+
+
 -- Datos Autor_Libro
 insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(1, 1);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(1, 10);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(1, 20);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 2);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 3);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 4);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(3, 5);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(3, 6);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(3, 7);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(4, 8);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(4, 9);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(4, 11);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 12);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 13);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 14);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 15);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 16);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 17);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 18);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 19);
-insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 21);
-
-
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(1, 2);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(1, 3);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(1, 4);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 5);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 6);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 7);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 8);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(2, 9);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(3, 10);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(3, 1);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(3, 12);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(3, 13);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(4, 14);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(4, 15);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(4, 16);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(4, 17);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 18);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 19);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 20);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(5, 22);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 23);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 24);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 25);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(6, 26);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(7, 27);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(7, 28);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(7, 29);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(7, 30);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(8, 31);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(8, 32);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(8, 33);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(8, 34);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(9, 35);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(9, 36);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(9, 37);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(9, 38);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(10, 39);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(10, 40);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(10, 41);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(10, 42);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(11, 43);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(11, 44);
+insert into AUTOR_LIBRO (AUT_Id, LBR_Id) values(11, 45);
 --------------------------------------------------------------------
 -- Datos de tipo de prestamo
 insert into TIPOS_PRESTAMO (TPR_Nombre) values('Lectura en Sala');
@@ -316,11 +351,11 @@ insert into ESTADO_TIPO_PRESTAMO (ETP_Descripcion) values('En domicilio');
 --Datos de ficha inscripcion; ANTES EJECUTAR EL TRIGGER QUE SE ENCUENTRA EN EL SCRIPT: TRIGGER
 
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Juan Perez', 'Av. Los Alamos 123', '1234567', '987654321', 'a@gmial.com','Universitario', 'foto.jpg', '2020-01-01', 1, '72899283');
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Juan Rodriguez Diaz', 'Avenida Revolución #15', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2020-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Ana Garcia Aponte', 'Carretera Central #25', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2002-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Carlos Diaz Diaz', 'Calle del Sol #35', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Laura Moreno Mendoza', 'Avenida de los Pinos #45', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Fernando Lopez Garcia', 'Carretera Nacional #55', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
+INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Juan Rodriguez Diaz', 'Avenida Revolución #15', '1234567', '97654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2020-01-01', 2, '72899283')
+INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Ana Garcia Aponte', 'Carretera Central #25', '1234567', '97654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2002-01-01', 1, '72899283')
+INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Carlos Diaz Diaz', 'Calle del Sol #35', '1234567', '97654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
+INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Laura Moreno Mendoza', 'Avenida de los Pinos #45', '1234567', '97654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
+INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Fernando Lopez Garcia', 'Carretera Nacional #55', '1234567', '97654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Marta Perez Suarez', 'Calle de la Luna #65', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 1, '72899283')
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('David Jimenez Perez', 'Avenida del Mar #75', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2021-01-01', 5, '72899283')
 INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Beatriz Suarez Diaz', 'Carretera del Rio #85', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2014-01-01', 1, '72899283')
@@ -371,27 +406,122 @@ INSERT  INTO INSPECCION (INS_Estado) VALUES ('MANCHADO')
 
 --- Insertar datos en la tabla PRESTAMOS
 
-EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',7
-EXEC SP_InsertarPrestamo 1,  '2022-12-23', '2022-12-24',4
-EXEC SP_InsertarPrestamo 3,  '2022-12-20', '2022-12-21',5
-EXEC SP_InsertarPrestamo 4,  '2022-12-25', '2022-12-26',6
-EXEC SP_InsertarPrestamo 5,  '2022-12-19', '2022-12-20',10
-EXEC SP_InsertarPrestamo 6,  '2022-12-25', '2022-12-26',8
-EXEC SP_InsertarPrestamo 7,  '2022-12-15', '2022-12-16',9
-EXEC SP_InsertarPrestamo 8,  '2022-12-25', '2022-12-26',10
-EXEC SP_InsertarPrestamo 9,  '2022-12-11', '2022-12-12',11
-EXEC SP_InsertarPrestamo 10, '2022-12-25', '2022-12-26',12
-EXEC SP_InsertarPrestamo 11, '2022-12-05', '2022-12-06',13
-EXEC SP_InsertarPrestamo 10, '2022-12-15', '2022-12-16',1
-EXEC SP_InsertarPrestamo 5, '2022-12-15', '2022-12-16',1
-EXEC SP_InsertarPrestamo 18, '2022-12-05', '2022-12-06',2
-EXEC SP_InsertarPrestamo 10, '2022-12-20', '2022-12-21',2
+EXEC SP_InsertarPrestamo 1,  '2022-12-25', '2022-12-27',1
+EXEC SP_InsertarPrestamo 2,  '2022-12-26', '2022-12-28',2
+EXEC SP_InsertarPrestamo 3,  '2022-12-27', '2022-12-29',3
+EXEC SP_InsertarPrestamo 4,  '2022-12-28', '2022-12-30',4
+EXEC SP_InsertarPrestamo 5,  '2022-12-29', '2022-12-31',5
+EXEC SP_InsertarPrestamo 6,  '2022-12-30', '2023-01-01',6
+EXEC SP_InsertarPrestamo 7,  '2022-12-25', '2022-12-27',7
+EXEC SP_InsertarPrestamo 8,  '2022-12-26', '2022-12-28',8
+EXEC SP_InsertarPrestamo 9,  '2022-12-27', '2022-12-29',9
+EXEC SP_InsertarPrestamo 10, '2022-12-28', '2022-12-30',10
 
---Insertamos devoluciones
-EXEC SP_InsertarDevolucion 1,1,'2022-12-27'
-EXEC SP_InsertarDevolucion 3,2,'2022-12-26'
-EXEC SP_InsertarDevolucion 4,5,'2022-12-29'
-EXEC SP_InsertarDevolucion 1,1,'2022-12-24'
+EXEC SP_InsertarPrestamo 1,  '2022-12-29', '2022-12-31',1
+EXEC SP_InsertarPrestamo 2,  '2022-12-30', '2023-01-01',2
+EXEC SP_InsertarPrestamo 3,  '2022-12-25', '2022-12-27',3
+EXEC SP_InsertarPrestamo 4,  '2022-12-26', '2022-12-28',4
+EXEC SP_InsertarPrestamo 5,  '2022-12-27', '2022-12-29',5
+EXEC SP_InsertarPrestamo 6,  '2022-12-28', '2022-12-30',6
+EXEC SP_InsertarPrestamo 7,  '2022-12-29', '2022-12-31',7
+EXEC SP_InsertarPrestamo 8,  '2022-12-30', '2023-01-01',8
+EXEC SP_InsertarPrestamo 9,  '2022-12-25', '2022-12-27',9
+EXEC SP_InsertarPrestamo 10, '2022-12-26', '2022-12-28',10
+
+EXEC SP_InsertarPrestamo 11, '2022-12-27', '2022-12-29',11
+EXEC SP_InsertarPrestamo 12, '2022-12-28', '2022-12-30',12
+EXEC SP_InsertarPrestamo 13, '2022-12-29', '2022-12-31',13
+EXEC SP_InsertarPrestamo 14, '2022-12-30', '2023-01-01',14
+EXEC SP_InsertarPrestamo 15, '2022-12-25', '2022-12-27',15
+
+EXEC SP_InsertarPrestamo 16,  '2022-12-26', '2022-12-28',16
+EXEC SP_InsertarPrestamo 17,  '2022-12-27', '2022-12-29',17
+EXEC SP_InsertarPrestamo 18,  '2022-12-28', '2022-12-30',18
+EXEC SP_InsertarPrestamo 19,  '2022-12-29', '2022-12-31',19
+EXEC SP_InsertarPrestamo 20,  '2022-12-30', '2023-01-01',20
+EXEC SP_InsertarPrestamo 21,  '2022-12-25', '2022-12-27',21
+EXEC SP_InsertarPrestamo 22,  '2022-12-26', '2022-12-28',22
+EXEC SP_InsertarPrestamo 23,  '2022-12-27', '2022-12-29',23
+EXEC SP_InsertarPrestamo 24,  '2022-12-28', '2022-12-30',24
+EXEC SP_InsertarPrestamo 25, '2022-12-29', '2023-01-31',25
+EXEC SP_InsertarPrestamo 26, '2022-12-30', '2023-01-01',26
+EXEC SP_InsertarPrestamo 27, '2022-12-25', '2022-12-27',27
+EXEC SP_InsertarPrestamo 28, '2022-12-26', '2022-12-28',28
+EXEC SP_InsertarPrestamo 29, '2022-12-27', '2022-12-29',29
+EXEC SP_InsertarPrestamo 30, '2022-12-28', '2022-12-30',30
+EXEC SP_InsertarPrestamo 31, '2022-12-29', '2022-12-31',31
+EXEC SP_InsertarPrestamo 32, '2022-12-30', '2022-12-31',32
+
+EXEC SP_InsertarPrestamo 33,  '2022-12-30', '2023-01-01',16
+EXEC SP_InsertarPrestamo 34,  '2022-12-25', '2022-12-27',17
+EXEC SP_InsertarPrestamo 35,  '2022-12-26', '2022-12-28',18
+EXEC SP_InsertarPrestamo 36,  '2022-12-27', '2022-12-29',19
+EXEC SP_InsertarPrestamo 37,  '2022-12-28', '2022-12-30',20
+EXEC SP_InsertarPrestamo 38, '2022-12-29', '2022-12-31',21
+EXEC SP_InsertarPrestamo 39, '2022-12-30', '2023-01-01',22
+EXEC SP_InsertarPrestamo 40, '2022-12-25', '2022-12-27',1
+EXEC SP_InsertarPrestamo 41, '2022-12-26', '2022-12-28',2
+EXEC SP_InsertarPrestamo 42, '2022-12-27', '2022-12-29',3
+EXEC SP_InsertarPrestamo 43, '2022-12-28', '2022-12-30',4
+EXEC SP_InsertarPrestamo 44, '2022-12-29', '2022-12-31',5
+EXEC SP_InsertarPrestamo 45, '2022-12-30', '2023-01-01',6
+
+
+-- INSERTAMOS DEVOLUCIONES
+EXEC SP_InsertarDevolucion 1, 1,'2023-01-02'
+EXEC SP_InsertarDevolucion 2, 2,'2023-01-03'
+EXEC SP_InsertarDevolucion 3, 3,'2023-01-04'
+EXEC SP_InsertarDevolucion 4, 4,'2023-01-05'
+EXEC SP_InsertarDevolucion 5, 5,'2023-01-06'
+EXEC SP_InsertarDevolucion 6, 1,'2023-01-02'
+EXEC SP_InsertarDevolucion 7, 2,'2023-01-03'
+EXEC SP_InsertarDevolucion 8, 3,'2023-01-04'
+EXEC SP_InsertarDevolucion 9, 4,'2023-01-05'
+EXEC SP_InsertarDevolucion 10,5,'2023-01-06'
+EXEC SP_InsertarDevolucion 11,1,'2023-01-02'
+EXEC SP_InsertarDevolucion 12,2,'2023-01-03'
+EXEC SP_InsertarDevolucion 13,3,'2023-01-04'
+EXEC SP_InsertarDevolucion 14,4,'2023-01-05'
+EXEC SP_InsertarDevolucion 15,5,'2023-01-06'
+EXEC SP_InsertarDevolucion 16,1,'2023-01-02'
+EXEC SP_InsertarDevolucion 17,2,'2023-01-03'
+EXEC SP_InsertarDevolucion 18,3,'2023-01-04'
+EXEC SP_InsertarDevolucion 19,4,'2023-01-05'
+EXEC SP_InsertarDevolucion 20,5,'2023-01-06'
+EXEC SP_InsertarDevolucion 21,1,'2023-01-02'
+EXEC SP_InsertarDevolucion 22,2,'2023-01-03'
+EXEC SP_InsertarDevolucion 23,3,'2023-01-04'
+EXEC SP_InsertarDevolucion 24,4,'2023-01-05'
+EXEC SP_InsertarDevolucion 25,5,'2023-01-06'
+EXEC SP_InsertarDevolucion 26,1,'2023-01-02'
+EXEC SP_InsertarDevolucion 27,2,'2023-01-03'
+EXEC SP_InsertarDevolucion 28,3,'2023-01-04'
+EXEC SP_InsertarDevolucion 29,4,'2023-01-05'
+EXEC SP_InsertarDevolucion 30,5,'2023-01-06'
+EXEC SP_InsertarDevolucion 31,1,'2023-01-02'
+EXEC SP_InsertarDevolucion 32,2,'2023-01-03'
+EXEC SP_InsertarDevolucion 33,3,'2023-01-04'
+EXEC SP_InsertarDevolucion 34,4,'2023-01-05'
+EXEC SP_InsertarDevolucion 35,5,'2023-01-06'
+EXEC SP_InsertarDevolucion 36,1,'2023-01-02'
+EXEC SP_InsertarDevolucion 37,2,'2023-01-03'
+EXEC SP_InsertarDevolucion 38,3,'2023-01-04'
+EXEC SP_InsertarDevolucion 39,4,'2023-01-05'
+EXEC SP_InsertarDevolucion 40,5,'2023-01-06'
+
+-- INSERTAR DATOS EN LA TABLA CON INSERT INTO
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (1, 1, '2022-12-30')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (2, 2, '2022-12-31')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (3, 3, '2022-12-30')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (4, 4, '2022-12-31')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (5, 5, '2022-12-30')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (6, 6, '2022-12-31')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (7, 7, '2022-12-30')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (8, 8, '2022-12-31')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (9, 9, '2022-12-30')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (10,10, '2022-12-31')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (11,11, '2022-12-30')
+INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (12,12, '2022-12-31')
 
 -- Muestra de datos de las tablas
 
@@ -399,11 +529,20 @@ SELECT * FROM USUARIOS
 SELECT * FROM LIBROS
 SELECT * FROM PRESTAMOS
 SELECT * FROM TIPOS_PRESTAMO
+SELECT * FROM TIPOS_USUARIO
 SELECT * FROM CARNETS
 SELECT * FROM FICHAS_INSCRIPCION
 SELECT * FROM INSPECCION
 SELECT * FROM EDITORIALES
+SELECT * FROM AUTOR_LIBRO
 
-select * from devoluciones
-select * from RETENCION
-select * from MULTAS
+SELECT * FROM DEVOLUCIONES
+SELECT * FROM RETENCION
+SELECT * FROM MULTAS
+SELECT * FROM RESERVA
+
+SELECT * FROM CATEGORIAS
+SELECT * FROM CAT_PRIMARIA
+SELECT * FROM CAT_SECUNDARIA
+
+SELECT * FROM ESTADO_TIPO_PRESTAMO
