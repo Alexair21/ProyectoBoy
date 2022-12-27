@@ -198,20 +198,22 @@ insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono
 insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00004', 'Luisa Rodriguez', 'Calle San Francisco', '987456123', 'luisa3@gmail.com', 'Colombia');
 insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00005', 'Carl Muller', N'Av. Hormigón #21', '987456786', 'carlos1@gmail.com', 'Alemania');
 insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', 'Jose Terrones', N'Plaza Sésamo', '987456123', 'jose21@gmail.com', N'Perú');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Claudia Méndez', 'Calle Rosales #10', '987456123', 'claudia12@gmail.com', 'Chile');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Albert Frankz', 'Av. Rosales #15', '957675612', 'albert12@gmail.com', 'Estados Unidos');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Rocío Casillas', 'Calle Platanos #11', '987456123', 'rocio11@gmail.com', N'España');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Wendy Ortinola', 'Av. Pamplona #15', '957575712', 'wen_orti1@gmail.com', N'Perú');
-insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00006', N'Mario Vargas Llosa', 'Calle Zapallo #11', '917156923', 'mario_var12@gmail.com', N'Perú');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00007', N'Claudia Méndez', 'Calle Rosales #10', '987456123', 'claudia12@gmail.com', 'Chile');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00008', N'Albert Frankz', 'Av. Rosales #15', '957675612', 'albert12@gmail.com', 'Estados Unidos');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00009', N'Rocío Casillas', 'Calle Platanos #11', '987456123', 'rocio11@gmail.com', N'España');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00010', N'Wendy Ortinola', 'Av. Pamplona #15', '957575712', 'wen_orti1@gmail.com', N'Perú');
+insert into AUTORES (AUT_Codigo, AUT_NombreCompleto, AUT_Direccion, AUT_Telefono, AUT_Email, AUT_Nacionalidad) values ('00011', N'Mario Vargas Llosa', 'Calle Zapallo #11', '917156923', 'mario_var12@gmail.com', N'Perú');
 
 
 ----------------------------------------------------------------------
 --Datos de centros de trabajo
-insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Centro 1', '987456123');
-insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Centro 2', '987456123');
-insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Centro 3', '987456123');
-insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Centro 4', '987456123');
-insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Centro 5', '987456123');
+insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values (N'Producción Industrial', '989563214');
+insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values (N'Diseño y Fabricación', '956987412');
+insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values (N'Servicios Técnicos', '995234876');
+insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values (N'Reparación y Mantenimiento', '965478231');
+insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Desarrollo de Software', '998712347');
+insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Manteniemiento de Hardware', '995175324');
+insert into CENTROS_TRABAJO (CEN_Nombre,CEN_Telefono) values ('Aplicaciones', '987456210');
 
 
 ----------------------------------------------------------------------
@@ -350,52 +352,54 @@ insert into ESTADO_TIPO_PRESTAMO (ETP_Descripcion) values('En domicilio');
 
 --Datos de ficha inscripcion; ANTES EJECUTAR EL TRIGGER QUE SE ENCUENTRA EN EL SCRIPT: TRIGGER
 
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Juan Perez', 'Av. Los Alamos 123', '1234567', '987654321', 'a@gmial.com','Universitario', 'foto.jpg', '2020-01-01', 1, '72899283');
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Juan Rodriguez Diaz', 'Avenida Revolución #15', '1234567', '97654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2020-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Ana Garcia Aponte', 'Carretera Central #25', '1234567', '97654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2002-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Carlos Diaz Diaz', 'Calle del Sol #35', '1234567', '97654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Laura Moreno Mendoza', 'Avenida de los Pinos #45', '1234567', '97654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Fernando Lopez Garcia', 'Carretera Nacional #55', '1234567', '97654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Marta Perez Suarez', 'Calle de la Luna #65', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('David Jimenez Perez', 'Avenida del Mar #75', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2021-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Beatriz Suarez Diaz', 'Carretera del Rio #85', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2014-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Jose Gonzalez Guerrero', 'Calle de las Estrellas #95', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Elena Martinez Suarez', 'Avenida de los Árboles #105', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Andres Soto Palomino', 'Carretera del Monte #115', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Cristina Ruiz Rodriguez', 'Calle del Cielo #125', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 3, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Mario Ortiz Suarez', 'Avenida de las Flores #135', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2014-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Rocio Rodriguez Carrera', 'Carretera del Valle #145', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Samuel Gonzalez Castillo', 'Calle de la Montaña #155', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Alba Moreno Suarez', 'Avenida de los Ríos #165', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 4, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Jorge Lopez Mostacero', 'Carretera del Océano #175', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Victoria Jimenez Camacho', 'Calle de la Pradera #185', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2020-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Juan Carlos Martinez', 'Avenida de los Bosques #195', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Maria Elena Perez', 'Carretera del Desierto #205', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2017-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Bruno Suarez Suarez', 'Calle de la Sierra #215', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2018-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Laura Diaz Rodriguez', 'Avenida de los Lagos #225', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Ana Gonzalez Perez', 'Carretera del Volcán #235', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Fernando Moreno Diaz', 'Calle de la Playa #245', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Cristina Lopez Ruiz', 'Avenida de las Colinas #255', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Mario Perez Ortiz', 'Carretera del Bosque #265', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2018-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Rocio Rodriguez Jimenez', 'Calle del Risco #275', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2015-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Samuel Gonzalez Ruiz', 'Avenida de las Cascadas #285', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Alba Moreno Gonzalez', 'Carretera del Cañón #295', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2017-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Jorge Lopez Ortiz', 'Calle de la Cueva #305', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2013-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Victoria Jimenez Perez', 'Avenida del Faro #315', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Juan Carlos Martinez Moreno', 'Carretera del Monte #325', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2015-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Maria Elena Perez Diaz', 'Calle de la Selva #335', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2013-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Bruno Suarez Lopez', 'Avenida de los Vientos #345', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2017-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Laura Diaz Garcia', 'Carretera del Risco #355', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 3, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Carlos Hernandez Ruiz', 'Calle del Lago #365', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2015-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Elena Garcia Soto', 'Avenida de las Rocas #375', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 5, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('David Ruiz Ortiz', 'Carretera del Bosque #385', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Beatriz Soto Jimenez', 'Calle de la Playa #395', '1234567', '7654321', 'a@gmail.com', 'Primaria', 'foto.jpg', '2019-01-01', 4, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Jose Ortiz Gonzalez', 'Avenida de las Dunas #405', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2011-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Marta Jimenez Lopez', 'Avenida 28 de julio #678', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Ana Gonzalez Perez', 'Calle Cerro Prieto #456', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2019-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Fernando Moreno Diaz', 'Carretera de los alamos #987', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2011-01-01', 1, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Rocio Rodriguez Jimenez', 'Avenida 2 de mayo #123', '1234567', '7654321', 'a@gmail.com', 'Bachiller', 'foto.jpg', '2017-01-01', 2, '72899283')
-INSERT INTO FICHAS_INSCRIPCION (FIN_Nombre, FIN_Direccion, FIN_Telefono, FIN_Celular, FIN_Email, FIN_GradoEstudios, FIN_Foto, FIN_Fecha, CEN_Id, FIN_Dni) values ('Diego Huamanjulca Guerrero', 'Calle 16', '1234567', '7654321', 'a@gmail.com', 'Sec. completa', 'foto.jpg', '2018-01-01', 1, '72899283')
+--ingresame datos en el SP_Ficha_Inscripcion
+EXEC SP_Ingreso_Ficha 'Juan Rodriguez Diaz', 'Avenida Revolución #15',  'Sec. completa', 2
+EXEC SP_Ingreso_Ficha 'Maria Garcia Aponte', 'Carretera Central #25', 'Primaria',  1
+EXEC SP_Ingreso_Ficha 'Carlos Diaz Diaz', 'Calle del Sol #35','Bachiller', 5
+EXEC SP_Ingreso_Ficha 'Laura Moreno Mendoza', 'Avenida de los Pinos #45','Sec. completa', 1
+EXEC SP_Ingreso_Ficha 'Fernando Lopez Garcia', 'Carretera Nacional #55','Bachiller', 5
+EXEC SP_Ingreso_Ficha 'Marta Perez Suarez', 'Calle de la Luna #65', 'Primaria', 1
+EXEC SP_Ingreso_Ficha 'David Jimenez Perez', 'Avenida del Mar #75', 'Sec. completa', 5
+EXEC SP_Ingreso_Ficha 'Beatriz Suarez Diaz', 'Carretera del Rio #85', 'Bachiller',  1
+EXEC SP_Ingreso_Ficha 'Jose Gonzalez Guerrero', 'Calle de las Estrellas #95','Primaria',  2
+EXEC SP_Ingreso_Ficha 'Elena Martinez Suarez', 'Avenida de los Árboles #105','Sec. completa', 1
+EXEC SP_Ingreso_Ficha 'Andres Soto Palomino', 'Carretera del Monte #115','Bachiller',  1
+EXEC SP_Ingreso_Ficha 'Cristina Ruiz Rodriguez', 'Calle del Cielo #125', 'Primaria',  3
+EXEC SP_Ingreso_Ficha 'Mario Ortiz Suarez', 'Avenida de las Flores #135',  'Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Rocio Rodriguez Carrera', 'Carretera del Valle #145' ,'Bachiller',  5
+EXEC SP_Ingreso_Ficha 'Samuel Gonzalez Castillo', 'Calle de la Montaña #155','Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Alba Moreno Suarez', 'Avenida de los Ríos #165','Primaria',  4
+EXEC SP_Ingreso_Ficha 'Jorge Lopez Mostacero', 'Carretera del Océano #175','Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Victoria Jimenez Camacho', 'Calle de la Pradera #185',  'Bachiller',  2
+EXEC SP_Ingreso_Ficha 'Juan Carlos Martinez', 'Avenida de los Bosques #195',  'Bachiller', 1
+EXEC SP_Ingreso_Ficha 'Maria Elena Perez', 'Carretera del Desierto #205', 'Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Bruno Suarez Suarez', 'Calle de la Sierra #215',  'Bachiller',  2
+EXEC SP_Ingreso_Ficha 'Laura Diaz Rodriguez', 'Avenida de los Lagos #225',  'Sec. completa', 1
+EXEC SP_Ingreso_Ficha 'Maria Gonzalez Perez', 'Carretera del Volcán #235',  'Bachiller',  1
+EXEC SP_Ingreso_Ficha 'Fernando Moreno Diaz', 'Calle de la Playa #245', 'Sec. completa', 2
+EXEC SP_Ingreso_Ficha 'Cristina Lopez Ruiz', 'Avenida de las Colinas #255',  'Primaria',  1
+EXEC SP_Ingreso_Ficha 'Mario Perez Ortiz', 'Carretera del Bosque #265',  'Bachiller',  5
+EXEC SP_Ingreso_Ficha 'Rocio Rodriguez Jimenez', 'Calle del Risco #275',  'Sec. completa', 1
+EXEC SP_Ingreso_Ficha 'Samuel Gonzalez Ruiz', 'Avenida de las Cascadas #285', 'Bachiller',  5
+EXEC SP_Ingreso_Ficha 'Alba Moreno Gonzalez', 'Carretera del Cañón #295', 'Primaria',  1
+EXEC SP_Ingreso_Ficha 'Jorge Lopez Ortiz', 'Calle de la Cueva #305',  'Sec. completa',  5
+EXEC SP_Ingreso_Ficha 'Victoria Jimenez Perez', 'Avenida del Faro #315', 'Bachiller', 1
+EXEC SP_Ingreso_Ficha 'Juan Carlos Martinez Moreno', 'Carretera del Monte #325','Primaria',  2
+EXEC SP_Ingreso_Ficha 'Maria Elena Perez Diaz', 'Calle de la Selva #335',  'Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Bruno Suarez Lopez', 'Avenida de los Vientos #345', 'Bachiller',  1
+EXEC SP_Ingreso_Ficha 'Laura Diaz Garcia', 'Carretera del Risco #355', 'Primaria',  3
+EXEC SP_Ingreso_Ficha 'Carlos Hernandez Ruiz', 'Calle del Lago #365', 'Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Elena Garcia Soto', 'Avenida de las Rocas #375',  'Bachiller',  5
+EXEC SP_Ingreso_Ficha 'David Ruiz Ortiz', 'Carretera del Bosque #385','Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Beatriz Soto Jimenez', 'Calle de la Playa #395', 'Primaria',  4
+EXEC SP_Ingreso_Ficha 'Jose Ortiz Gonzalez', 'Avenida de las Dunas #405', 'Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Marta Jimenez Lopez', 'Avenida 28 de julio #678', 'Bachiller',  2
+EXEC SP_Ingreso_Ficha 'Maria Gonzalez Perez', 'Calle Cerro Prieto #456',  'Bachiller', 1
+EXEC SP_Ingreso_Ficha 'Fernando Moreno Diaz', 'Carretera de los alamos #987', 'Sec. completa',  1
+EXEC SP_Ingreso_Ficha 'Rocio Rodriguez Jimenez', 'Avenida 2 de mayo #123','Bachiller', 2
+EXEC SP_Ingreso_Ficha 'Diego Huamanjulca Guerrero', 'Calle 16', 'Sec. completa',1
+EXEC SP_Ingreso_Ficha 'Kevin Carrera Yzquierdo', 'Avenida 28 de julio #678', 'Primaria',  2
+
 
 -- Insertar datos en la tabla INSPECCION
 INSERT  INTO INSPECCION (INS_Estado) VALUES ('Ok')
@@ -523,26 +527,5 @@ INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (10,10, '2022-12-31')
 INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (11,11, '2022-12-30')
 INSERT INTO RESERVA(USR_Id,LBR_Id,RES_Inicio) VALUES (12,12, '2022-12-31')
 
--- Muestra de datos de las tablas
 
-SELECT * FROM USUARIOS
-SELECT * FROM LIBROS
-SELECT * FROM PRESTAMOS
-SELECT * FROM TIPOS_PRESTAMO
-SELECT * FROM TIPOS_USUARIO
-SELECT * FROM CARNETS
-SELECT * FROM FICHAS_INSCRIPCION
-SELECT * FROM INSPECCION
-SELECT * FROM EDITORIALES
-SELECT * FROM AUTOR_LIBRO
 
-SELECT * FROM DEVOLUCIONES
-SELECT * FROM RETENCION
-SELECT * FROM MULTAS
-SELECT * FROM RESERVA
-
-SELECT * FROM CATEGORIAS
-SELECT * FROM CAT_PRIMARIA
-SELECT * FROM CAT_SECUNDARIA
-
-SELECT * FROM ESTADO_TIPO_PRESTAMO

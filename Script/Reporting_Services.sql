@@ -17,6 +17,7 @@ BEGIN
     INNER JOIN CAT_PRIMARIA CP on L.CTP_Id = CP.CTP_Id
     WHERE E.EDT_Nombre = @Editorial
 END
+GO
 
 DROP PROCEDURE SP_AñoLibroEdtiorial
 
@@ -34,6 +35,7 @@ BEGIN
     WHERE E.EDT_Nombre = @Editorial
     GROUP BY YEAR( L.LBR_AñoPublicacion)
 END
+go
 
 DROP PROCEDURE SP_ResumenLibroEditorial
 

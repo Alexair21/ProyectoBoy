@@ -1,7 +1,37 @@
-use proyecto2;
+--Procedimiento almacenado para registrar una FICHA DE INCRIPCION
+
+CREATE PROCEDURE SP_Ingreso_Ficha(
+    @FIN_Nombre VARCHAR(60),
+    @FIN_Direccion VARCHAR(60),
+    @FIN_GradoEstudios VARCHAR(30),
+    @CEN_Id INT
+)
+AS
+    BEGIN
+        DECLARE
+            @FIN_DNI CHAR(8),
+            @FIN_Telefono CHAR(10),
+            @FIN_Celular CHAR(9),
+            @FIN_Email VARCHAR(40),
+            @FIN_Foto VARCHAR(100),
+            @FIN_Fecha date
+
+
+
+        SET @FIN_DNI = (SELECT CAST(RAND() * (80000000 - 70000000) + 70000000 AS INT))
+        SET @FIN_Telefono = CONCAT('044','-', FLOOR(RAND()*(999999-100000)+100000))
+        SET @FIN_Celular = (SELECT CAST(RAND() * 100000000 AS INT) + 900000000)
+        SET @FIN_Email =SUBSTRING(@FIN_Nombre,1,4)+CAST(FLOOR(RAND()*(2022-1950)+1950) AS VARCHAR)+'@gmail.com'
+        SET @FIN_Foto ='foto_'+CAST(FLOOR(RAND()*(2022-1950)+1950) AS VARCHAR)+'.jpg'
+        SET @FIN_Fecha =DATEADD(day, FLOOR(RAND()*(8000-0)+0), '2000-01-01')
+        INSERT INTO FICHAS_INSCRIPCION(FIN_Nombre,FIN_Direccion,FIN_Telefono,FIN_DNI,FIN_Celular,FIN_Email,FIN_GradoEstudios,FIN_Foto,FIN_Fecha,CEN_Id)
+        VALUES(@FIN_Nombre,@FIN_Direccion,@FIN_Telefono,@FIN_DNI,@FIN_Celular,@FIN_Email,@FIN_GradoEstudios,@FIN_Foto,@FIN_Fecha,@CEN_Id)
+end
+GO
+
+
 
 --Trigger para llenar la tabla USUARIOS cuando se haga un registro en la tabla FICHA_INSCRIPCION
-
 CREATE TRIGGER TR_USUARIOS
     ON FICHAS_INSCRIPCION
     FOR INSERT
@@ -101,8 +131,10 @@ BEGIN
         BEGIN
             --traemos el CAR_Id de la tabla CARNET de ese usuario y lo almacenamos en una variable @DocumentoPrestamo
             SET @DocumentoPrestamo = (SELECT CAR_Id FROM CARNETS WHERE USR_Codigo = @USR_Id)
-            SET @TPR_Id = (SELECT FLOOR(RAND()*(2-1)+1))
-            SET @ETP_Id = (SELECT FLOOR(RAND()*(2-1)+1))
+            SET @TPR_Id = (SELECT FLOOR(RAND()*(3-1)+1))
+            SET @ETP_Id = (SELECT FLOOR(RAND()*(3-1)+1))
+            --numero aleatorio entre 1 y 2 para el tipo de prestamo
+
         end
 
     ELSE
@@ -217,4 +249,3 @@ AS
         WHERE LBR_Id = (SELECT LBR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
 GO
 
-DROP TRIGGER TRG_RETENCION

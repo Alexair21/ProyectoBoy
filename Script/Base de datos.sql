@@ -7,7 +7,6 @@ create database Proyecto2;
 use Proyecto2;
 
 
-
 CREATE TABLE AUTOR_LIBRO
 (
 	AUT_Id               int  NOT NULL ,
@@ -31,7 +30,7 @@ CREATE TABLE AUTORES
 	AUT_Direccion        varchar(40)  NOT NULL ,
 	AUT_Telefono         char(10)  NOT NULL ,
 	AUT_Email            varchar(40)  NOT NULL ,
-	AUT_Nacionalidad     varchar(30)  NOT NULL
+	AUT_Nacionalidad     varchar(15)  NOT NULL
 )
 go
 
@@ -112,7 +111,7 @@ go
 CREATE TABLE CENTROS_TRABAJO
 (
 	CEN_Id               int IDENTITY ( 1,1 ) ,
-	CEN_Nombre           varchar(30)  NOT NULL ,
+	CEN_Nombre           varchar(50)  NOT NULL ,
 	CEN_Telefono         varchar(10)  NOT NULL
 )
 go
@@ -184,7 +183,7 @@ CREATE TABLE FICHAS_INSCRIPCION
 	FIN_Foto             varchar(100)  NOT NULL ,
 	FIN_Fecha            date  NOT NULL ,
 	CEN_Id               int  NULL ,
-	FIN_Dni              char(18)  NULL
+	FIN_Dni              char(8)  NULL
 )
 go
 
@@ -538,4 +537,3 @@ ALTER TABLE USUARIOS
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
-
