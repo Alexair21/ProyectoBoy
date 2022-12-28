@@ -220,7 +220,7 @@ CREATE TABLE LIBROS
 	LBR_AñoPublicacion   date  NOT NULL ,
 	EDT_Id               int  NOT NULL ,
 	CAT_Id               int  NULL ,
-	LBR_Cantidad         char(18)  NULL ,
+	LBR_Cantidad         int  NULL ,
 	CTP_Id               int  NULL
 )
 go
