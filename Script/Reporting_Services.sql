@@ -104,3 +104,4 @@ AS
     end
 
 DROP PROCEDURE SP_ResumenUsuarios
+---------------------------------------------

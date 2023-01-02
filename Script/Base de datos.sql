@@ -1,10 +1,13 @@
 use master;
-
+GO
 drop database if exists proyecto2;
+GO
 
 create database Proyecto2;
+GO
 
 use Proyecto2;
+GO
 
 
 CREATE TABLE AUTOR_LIBRO
@@ -221,7 +224,8 @@ CREATE TABLE LIBROS
 	EDT_Id               int  NOT NULL ,
 	CAT_Id               int  NULL ,
 	LBR_Cantidad         int  NULL ,
-	CTP_Id               int  NULL
+	CTP_Id               int  NULL ,
+	LBR_Estado           varchar(15)  NULL
 )
 go
 
@@ -338,7 +342,7 @@ go
 CREATE TABLE USUARIOS
 (
 	USR_Id               int IDENTITY ( 1,1 ) ,
-	EstadoCarnet         smallint  NULL ,
+	EstadoCarnet         varchar(15)  NULL ,
 	FIN_Id               int  NULL
 )
 go

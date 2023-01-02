@@ -1,9 +1,12 @@
+USE Proyecto2
+GO
 --Procedimiento almacenado para registrar una FICHA DE INCRIPCION
 
 CREATE PROCEDURE SP_Ingreso_Ficha(
     @FIN_Nombre VARCHAR(60),
     @FIN_Direccion VARCHAR(60),
     @FIN_GradoEstudios VARCHAR(30),
+    @FIN_Foto VARCHAR(100),
     @CEN_Id INT
 )
 AS
@@ -13,7 +16,6 @@ AS
             @FIN_Telefono CHAR(10),
             @FIN_Celular CHAR(9),
             @FIN_Email VARCHAR(40),
-            @FIN_Foto VARCHAR(100),
             @FIN_Fecha date
 
 
@@ -22,14 +24,11 @@ AS
         SET @FIN_Telefono = CONCAT('044','-', FLOOR(RAND()*(999999-100000)+100000))
         SET @FIN_Celular = (SELECT CAST(RAND() * 100000000 AS INT) + 900000000)
         SET @FIN_Email =SUBSTRING(@FIN_Nombre,1,4)+CAST(FLOOR(RAND()*(2022-1950)+1950) AS VARCHAR)+'@gmail.com'
-        SET @FIN_Foto ='foto_'+CAST(FLOOR(RAND()*(2022-1950)+1950) AS VARCHAR)+'.jpg'
         SET @FIN_Fecha =DATEADD(day, FLOOR(RAND()*(8000-0)+0), '2000-01-01')
         INSERT INTO FICHAS_INSCRIPCION(FIN_Nombre,FIN_Direccion,FIN_Telefono,FIN_DNI,FIN_Celular,FIN_Email,FIN_GradoEstudios,FIN_Foto,FIN_Fecha,CEN_Id)
         VALUES(@FIN_Nombre,@FIN_Direccion,@FIN_Telefono,@FIN_DNI,@FIN_Celular,@FIN_Email,@FIN_GradoEstudios,@FIN_Foto,@FIN_Fecha,@CEN_Id)
 end
 GO
-
-
 
 --Trigger para llenar la tabla USUARIOS cuando se haga un registro en la tabla FICHA_INSCRIPCION
 CREATE TRIGGER TR_USUARIOS
@@ -38,16 +37,23 @@ CREATE TRIGGER TR_USUARIOS
 AS
     BEGIN
         DECLARE @FIN_Id INT
+        DECLARE @Estado int
         select @FIN_Id = FIN_Id from inserted
-        DECLARE @CARNET SMALLINT
+        DECLARE @CARNET VARCHAR(15)
         --generar un numero entre 1 y 0 para el carnet
         SET
-        @CARNET = (SELECT CAST(RAND() * 2 AS INT))
+        @Estado = (SELECT CAST(RAND() * 2 AS INT))
+        IF @Estado = 1 BEGIN
+            SET @CARNET = 'CON CARNET'
+        END
+        ELSE BEGIN
+            SET @CARNET = 'SIN CARNET'
+        END
         --insertar en la tabla USUARIOS
         INSERT INTO USUARIOS (FIN_Id, EstadoCarnet)
         VALUES (@FIN_Id, @CARNET)
 
-        IF @CARNET = 1
+        IF @CARNET = 'CON CARNET'
         BEGIN
             DECLARE @USR_Codigo CHAR(18)
             DECLARE @CAR_NombreCompleto VARCHAR(60)
@@ -87,7 +93,7 @@ AS
 BEGIN
     BEGIN TRANSACTION TR_PRESTAMOS
         DECLARE @LBR_Id  INT
-        DECLARE @LBR_Cantidad INT
+        DECLARE @LBR_Cantidad   INT
 
         -- Hacer que la cantidad de libros disminuya
         SELECT
@@ -127,7 +133,7 @@ BEGIN
         @DocumentoPrestamo char(18)
 
 
-    IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = @USR_Id AND EstadoCarnet = 1)
+    IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = @USR_Id AND EstadoCarnet = 'CON CARNET')
         BEGIN
             --traemos el CAR_Id de la tabla CARNET de ese usuario y lo almacenamos en una variable @DocumentoPrestamo
             SET @DocumentoPrestamo = (SELECT CAR_Id FROM CARNETS WHERE USR_Codigo = @USR_Id)
@@ -180,6 +186,7 @@ CREATE TRIGGER TRG_RETENCION
 AS
     DECLARE @INS_Id INT
     SELECT @INS_Id = INS_Id FROM inserted
+    DECLARE @INS_Estado VARCHAR(60)
     BEGIN
 
         DECLARE
@@ -197,7 +204,7 @@ AS
             IF @INS_Id  >=2 AND @INS_Id  <= 5
                 BEGIN
                     --SI EstadoCarnet del Usuario es igual a 1 entonces se toma el CAR_Id de la tabla CARNETS
-                    IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)) AND EstadoCarnet = 1)
+                    IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)) AND EstadoCarnet = 'CON CARNET')
                         BEGIN
                             SET @CAR_Id = (SELECT CAR_Id FROM CARNETS WHERE USR_Codigo = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)))
                         END
@@ -216,7 +223,7 @@ AS
                 SELECT @DEV_FechaDevolucion = DEV_FechaDevolucion FROM inserted
                 SELECT @PRS_Id = PRS_Id FROM inserted
                 SELECT @Resta_Fechas = DATEDIFF(DAY, (SELECT PRS_FechaDevolucion FROM PRESTAMOS WHERE PRS_Id = @PRS_Id), @DEV_FechaDevolucion)
-                SET @MUL_Fecha = GETDATE()
+                SET @MUL_Fecha = @DEV_FechaDevolucion
                 SET @USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = @PRS_Id)
                 SET @MUL_Monto = 0
                 IF @INS_Id  >=2 AND @INS_Id  <= 5
@@ -237,15 +244,43 @@ AS
 
         --SI EstadoCarnet del Usuario es igual a 1 entonces actualizamos el estado del carnet a 1
 
-        IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)) AND EstadoCarnet = 1)
+        IF EXISTS (SELECT * FROM USUARIOS WHERE USR_Id = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted)) AND EstadoCarnet = 'CON CARNET')
             BEGIN
                 UPDATE CARNETS
                 SET CAR_Retenido = 1
                 WHERE USR_Codigo = (SELECT USR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
             END
 
+        IF (@INS_Id=1)
+            BEGIN
+                SET @INS_Estado = 'OK'
+            end
+        IF (@INS_Id=2)
+            BEGIN
+                SET @INS_Estado = 'ROTO'
+            end
+        IF (@INS_Id=3)
+            BEGIN
+                SET @INS_Estado = 'FALTAN HOJAS'
+            end
+        IF (@INS_Id=4)
+            BEGIN
+                SET @INS_Estado = 'PERDIDO'
+            end
+        IF (@INS_Id=5)
+             BEGIN
+                SET @INS_Estado = 'MANCHADO'
+            end
+
+
+
+
         UPDATE LIBROS
         SET LBR_Cantidad = LBR_Cantidad + 1
+        WHERE LBR_Id = (SELECT LBR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
+        --actualizar el estado del libro
+        UPDATE LIBROS
+        SET LBR_Estado = @INS_Estado
         WHERE LBR_Id = (SELECT LBR_Id FROM PRESTAMOS WHERE PRS_Id = (SELECT PRS_Id FROM inserted))
 GO
 
