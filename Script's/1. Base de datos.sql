@@ -1,10 +1,14 @@
 use master;
-
+GO
 drop database if exists proyecto2;
+GO
 
 create database Proyecto2;
+GO
 
 use Proyecto2;
+GO
+
 
 CREATE TABLE AUTOR_LIBRO
 (
@@ -29,7 +33,7 @@ CREATE TABLE AUTORES
 	AUT_Direccion        varchar(40)  NOT NULL ,
 	AUT_Telefono         char(10)  NOT NULL ,
 	AUT_Email            varchar(40)  NOT NULL ,
-	AUT_Nacionalidad     char(02)  NOT NULL
+	AUT_Nacionalidad     varchar(15)  NOT NULL
 )
 go
 
@@ -110,7 +114,7 @@ go
 CREATE TABLE CENTROS_TRABAJO
 (
 	CEN_Id               int IDENTITY ( 1,1 ) ,
-	CEN_Nombre           varchar(30)  NOT NULL ,
+	CEN_Nombre           varchar(50)  NOT NULL ,
 	CEN_Telefono         varchar(10)  NOT NULL
 )
 go
@@ -123,11 +127,63 @@ go
 
 
 
+CREATE TABLE DETALLE_MULTA
+(
+	PRS_Id               int  NOT NULL ,
+	MUL_Id               char(3)  NOT NULL ,
+	DMU_Monto            money  NOT NULL ,
+	DMU_ImporteTotal     money  NULL ,
+	DMU_Estado           char(15)  NULL
+)
+go
+
+
+
+ALTER TABLE DETALLE_MULTA
+	ADD CONSTRAINT XPKDETALLE_MULTA PRIMARY KEY  CLUSTERED (PRS_Id ASC,MUL_Id ASC)
+go
+
+
+
+CREATE TABLE DETALLE_PRESTAMO
+(
+	PRS_Id               int  NOT NULL ,
+	LBR_Id               int  NOT NULL ,
+	DPR_Cantidad         int  NULL ,
+	DPR_CantidadHrs      int  NULL
+)
+go
+
+
+
+ALTER TABLE DETALLE_PRESTAMO
+	ADD CONSTRAINT XPKDETALLE_PRESTAMO PRIMARY KEY  CLUSTERED (PRS_Id ASC,LBR_Id ASC)
+go
+
+
+
+CREATE TABLE DETALLE_RESERVA
+(
+	LBR_Id               int  NOT NULL ,
+	RES_Id               int  NOT NULL ,
+	RED_NumeroLibros     int  NULL
+)
+go
+
+
+
+ALTER TABLE DETALLE_RESERVA
+	ADD CONSTRAINT XPKDETALLE_RESERVA PRIMARY KEY  CLUSTERED (RES_Id ASC,LBR_Id ASC)
+go
+
+
+
 CREATE TABLE DEVOLUCIONES
 (
 	DEV_Id               int IDENTITY ( 1,1 ) ,
 	PRS_Id               int  NOT NULL ,
-	INS_Id               int  NOT NULL
+	INS_Id               int  NOT NULL ,
+	DEV_FechaDevolucion  date  NULL
 )
 go
 
@@ -154,10 +210,25 @@ go
 
 
 
+CREATE TABLE ESTADO_RESERVA
+(
+	ERE_Id               int IDENTITY ( 1,1 ) ,
+	ERE_Descripcion      char(18)  NULL
+)
+go
+
+
+
+ALTER TABLE ESTADO_RESERVA
+	ADD CONSTRAINT XPKESTADO_RESERVA PRIMARY KEY  CLUSTERED (ERE_Id ASC)
+go
+
+
+
 CREATE TABLE ESTADO_TIPO_PRESTAMO
 (
-	ETP_Id               char(18)  NOT NULL ,
-	ETP_Descripcion      char(20)  NULL
+	ETP_Id               int IDENTITY ( 1,1 ) ,
+	ETP_Descripcion      varchar(20)  NULL
 )
 go
 
@@ -180,7 +251,8 @@ CREATE TABLE FICHAS_INSCRIPCION
 	FIN_GradoEstudios    varchar(30)  NOT NULL ,
 	FIN_Foto             varchar(100)  NOT NULL ,
 	FIN_Fecha            date  NOT NULL ,
-	CEN_Id               int  NULL
+	CEN_Id               int  NULL ,
+	FIN_Dni              char(8)  NULL
 )
 go
 
@@ -195,8 +267,7 @@ go
 CREATE TABLE INSPECCION
 (
 	INS_Id               int IDENTITY ( 1,1 ) ,
-	LBR_Id               int  NOT NULL ,
-	INS_Estado           char(01)  NOT NULL
+	INS_Estado           varchar(15)  NOT NULL
 )
 go
 
@@ -218,8 +289,9 @@ CREATE TABLE LIBROS
 	LBR_AñoPublicacion   date  NOT NULL ,
 	EDT_Id               int  NOT NULL ,
 	CAT_Id               int  NULL ,
-	LBR_Cantidad         char(18)  NULL ,
-	CTP_Id               int  NULL
+	LBR_Cantidad         int  NULL ,
+	CTP_Id               int  NULL ,
+	LBR_Estado           varchar(15)  NULL
 )
 go
 
@@ -233,11 +305,10 @@ go
 
 CREATE TABLE MULTAS
 (
-	MUL_Id               int IDENTITY ( 1,1 ) ,
-	MUL_Monto            money  NOT NULL ,
+	MUL_Id               char(3)  NOT NULL ,
 	MUL_Fecha            date  NOT NULL ,
 	USR_Id               int  NOT NULL ,
-	PRS_Id               int  NULL
+	MUL_Descripcion      varchar(50)  NULL
 )
 go
 
@@ -252,13 +323,12 @@ go
 CREATE TABLE PRESTAMOS
 (
 	PRS_Id               int IDENTITY ( 1,1 ) ,
-	LBR_Id               int  NOT NULL ,
 	TPR_Id               int  NOT NULL ,
-	PRS_FechaDevolucion  date  NOT NULL ,
 	USR_Id               int  NOT NULL ,
-	CAR_Id               int  NOT NULL ,
-	PRS_FechaPrestamo    char(18)  NULL ,
-	ETP_Id               char(18)  NULL
+	PRS_FechaPrestamo    date  NULL ,
+	ETP_Id               int  NULL ,
+	PRS_DocumentosPrestados char(18)  NULL ,
+	PRS_FechaDevolucion  date  NOT NULL
 )
 go
 
@@ -274,8 +344,13 @@ CREATE TABLE RESERVA
 (
 	RES_Id               int IDENTITY ( 1,1 ) ,
 	USR_Id               int  NULL ,
-	LBR_Id               int  NULL ,
-	RES_Inicio           date  NOT NULL
+	RES_FechaInicio      date  NOT NULL ,
+	RES_FechaFinal       date  NOT NULL ,
+	RES_Nota             varchar(100)  NULL ,
+	RES_DocumentoUsuario char(18)  NULL ,
+	TPR_Id               int  NULL ,
+	RES_CantidadTotalLibros int  NULL ,
+	ERE_Id               int  NULL
 )
 go
 
@@ -289,17 +364,31 @@ go
 
 CREATE TABLE RETENCION
 (
-	INS_Id               int  NOT NULL ,
 	RTN_Id               int IDENTITY ( 1,1 ) ,
-	RTN_Estado           char(18)  NOT NULL ,
-	CAR_Id               int  NOT NULL
+	DEV_Id               int  NOT NULL ,
+	CAR_Id               int  NULL
 )
 go
 
 
 
 ALTER TABLE RETENCION
-	ADD CONSTRAINT XPKRETENCION PRIMARY KEY  CLUSTERED (INS_Id ASC,RTN_Id ASC,CAR_Id ASC)
+	ADD CONSTRAINT XPKRETENCION PRIMARY KEY  CLUSTERED (RTN_Id ASC,DEV_Id ASC)
+go
+
+
+
+CREATE TABLE TIPO_RESERVA
+(
+	TPR_Id               int IDENTITY ( 1,1 ) ,
+	TPR_Descripcion      char(18)  NULL
+)
+go
+
+
+
+ALTER TABLE TIPO_RESERVA
+	ADD CONSTRAINT XPKTIPO_RESERVA PRIMARY KEY  CLUSTERED (TPR_Id ASC)
 go
 
 
@@ -337,8 +426,8 @@ go
 CREATE TABLE USUARIOS
 (
 	USR_Id               int IDENTITY ( 1,1 ) ,
-	FIN_Id               int  NOT NULL ,
-	ESTADO_CARNET        smallint  NULL
+	EstadoCarnet         varchar(15)  NULL ,
+	FIN_Id               int  NULL
 )
 go
 
@@ -396,6 +485,60 @@ go
 
 
 
+ALTER TABLE DETALLE_MULTA
+	ADD CONSTRAINT R_106 FOREIGN KEY (PRS_Id) REFERENCES PRESTAMOS(PRS_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
+ALTER TABLE DETALLE_MULTA
+	ADD CONSTRAINT R_107 FOREIGN KEY (MUL_Id) REFERENCES MULTAS(MUL_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
+ALTER TABLE DETALLE_PRESTAMO
+	ADD CONSTRAINT R_103 FOREIGN KEY (PRS_Id) REFERENCES PRESTAMOS(PRS_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
+ALTER TABLE DETALLE_PRESTAMO
+	ADD CONSTRAINT R_104 FOREIGN KEY (LBR_Id) REFERENCES LIBROS(LBR_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
+ALTER TABLE DETALLE_RESERVA
+	ADD CONSTRAINT R_101 FOREIGN KEY (LBR_Id) REFERENCES LIBROS(LBR_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
+ALTER TABLE DETALLE_RESERVA
+	ADD CONSTRAINT R_102 FOREIGN KEY (RES_Id) REFERENCES RESERVA(RES_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
 ALTER TABLE DEVOLUCIONES
 	ADD CONSTRAINT R_46 FOREIGN KEY (PRS_Id) REFERENCES PRESTAMOS(PRS_Id)
 		ON DELETE NO ACTION
@@ -416,15 +559,6 @@ go
 
 ALTER TABLE FICHAS_INSCRIPCION
 	ADD CONSTRAINT R_67 FOREIGN KEY (CEN_Id) REFERENCES CENTROS_TRABAJO(CEN_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
-ALTER TABLE INSPECCION
-	ADD CONSTRAINT R_45 FOREIGN KEY (LBR_Id) REFERENCES LIBROS(LBR_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -459,24 +593,6 @@ go
 
 
 
-ALTER TABLE MULTAS
-	ADD CONSTRAINT R_94 FOREIGN KEY (PRS_Id) REFERENCES PRESTAMOS(PRS_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
-ALTER TABLE PRESTAMOS
-	ADD CONSTRAINT R_40 FOREIGN KEY (LBR_Id) REFERENCES LIBROS(LBR_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
 ALTER TABLE PRESTAMOS
 	ADD CONSTRAINT R_41 FOREIGN KEY (TPR_Id) REFERENCES TIPOS_PRESTAMO(TPR_Id)
 		ON DELETE NO ACTION
@@ -488,15 +604,6 @@ go
 
 ALTER TABLE PRESTAMOS
 	ADD CONSTRAINT R_42 FOREIGN KEY (USR_Id) REFERENCES USUARIOS(USR_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-
-
-ALTER TABLE PRESTAMOS
-	ADD CONSTRAINT R_43 FOREIGN KEY (CAR_Id) REFERENCES CARNETS(CAR_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -523,7 +630,16 @@ go
 
 
 ALTER TABLE RESERVA
-	ADD CONSTRAINT R_54 FOREIGN KEY (LBR_Id) REFERENCES LIBROS(LBR_Id)
+	ADD CONSTRAINT R_99 FOREIGN KEY (TPR_Id) REFERENCES TIPO_RESERVA(TPR_Id)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
+
+
+ALTER TABLE RESERVA
+	ADD CONSTRAINT R_109 FOREIGN KEY (ERE_Id) REFERENCES ESTADO_RESERVA(ERE_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -532,7 +648,7 @@ go
 
 
 ALTER TABLE RETENCION
-	ADD CONSTRAINT R_75 FOREIGN KEY (INS_Id) REFERENCES INSPECCION(INS_Id)
+	ADD CONSTRAINT R_96 FOREIGN KEY (DEV_Id) REFERENCES DEVOLUCIONES(DEV_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -541,18 +657,8 @@ go
 
 
 ALTER TABLE RETENCION
-	ADD CONSTRAINT R_76 FOREIGN KEY (CAR_Id) REFERENCES CARNETS(CAR_Id)
+	ADD CONSTRAINT R_97 FOREIGN KEY (CAR_Id) REFERENCES CARNETS(CAR_Id)
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
-
-
-
-
-ALTER TABLE USUARIOS
-	ADD CONSTRAINT R_44 FOREIGN KEY (FIN_Id) REFERENCES FICHAS_INSCRIPCION(FIN_Id)
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
 
