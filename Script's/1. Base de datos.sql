@@ -1,6 +1,7 @@
 use master;
 GO
-drop database if exists proyecto2;
+
+drop database if exists Proyecto2;
 GO
 
 create database Proyecto2;

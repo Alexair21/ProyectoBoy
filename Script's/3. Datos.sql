@@ -469,26 +469,43 @@ INSERT INTO DETALLE_RESERVA VALUES(21,9,2)
 INSERT INTO DETALLE_RESERVA VALUES(27,10,1)
 INSERT INTO DETALLE_RESERVA VALUES(32,10,1)
 
+
 --DATOS DE PRESTAMO
-EXEC SP_InsertarPrestamo 1, '2021-01-02', '2021-01-03', 1, 1, 6,1, 1
-EXEC SP_InsertarPrestamo 2, '2021-01-02', '2021-01-03', 2, 1, 7,2, 2
-EXEC SP_InsertarPrestamo 3, '2021-01-02', '2021-01-03', 3, 1, 9,1,1
-EXEC SP_InsertarPrestamo 4, '2021-01-02', '2021-01-03', 4, 1, 10,1,2
-EXEC SP_InsertarPrestamo 4, '2021-01-01', '2021-01-03', 5, 1, 13,1,2
+EXEC SP_InsertarPrestamo 1, '2022-11-26', '2022-11-28', 1, 1, 6,1, 1
+EXEC SP_InsertarPrestamo 2, '2022-11-27', '2022-11-29', 2, 1, 7,2, 2
+EXEC SP_InsertarPrestamo 3, '2022-11-28', '2022-11-30', 3, 1, 9,1,1
+EXEC SP_InsertarPrestamo 4, '2022-11-29', '2022-12-01', 4, 1, 10,1,2
+EXEC SP_InsertarPrestamo 5, '2022-11-30', '2022-12-02', 5, 1, 12,1,2
+EXEC SP_InsertarPrestamo 6, '2022-12-27', '2022-12-29', 6, 1, 6,1, 1
+EXEC SP_InsertarPrestamo 7, '2022-12-28', '2022-12-30', 7, 1, 5,2, 2
+EXEC SP_InsertarPrestamo 8, '2022-12-29', '2022-12-31', 8, 1, 9,1,1
+EXEC SP_InsertarPrestamo 9, '2022-12-30', '2023-01-01', 9, 1, 10,1,2
+EXEC SP_InsertarPrestamo 10, '2022-12-31', '2023-12-02', 10, 1, 19,1,2
 
 --DATOS DE DEVOLUCIONES
-EXEC SP_InsertarDevolucion 1, 1,'2022-12-28'
-EXEC SP_InsertarDevolucion 2, 2,'2023-01-03'
-EXEC SP_InsertarDevolucion 3, 3,'2022-12-04'
-EXEC SP_InsertarDevolucion 4, 4,'2022-10-30'
-EXEC SP_InsertarDevolucion 5, 5,'2023-01-06'
+EXEC SP_InsertarDevolucion 1, 1,'2022-12-30'
+EXEC SP_InsertarDevolucion 2, 2,'2022-12-01'
+EXEC SP_InsertarDevolucion 3, 3,'2023-12-01'
+EXEC SP_InsertarDevolucion 4, 4,'2023-01-02'
+EXEC SP_InsertarDevolucion 5, 5,'2023-01-03'
+EXEC SP_InsertarDevolucion 6, 1,'2023-01-03'
+EXEC SP_InsertarDevolucion 7, 2,'2023-01-02'
+EXEC SP_InsertarDevolucion 8, 3,'2023-01-04'
+EXEC SP_InsertarDevolucion 9, 4,'2023-01-05'
+EXEC SP_InsertarDevolucion 10, 5,'2023-01-06'
+
 
 --DATOS DE MULTAS
-EXEC SP_InsertarMulta '001', 1, '2023-01-15', 'Por devolver el libro en mal estado'
-EXEC SP_InsertarMulta '002', 2, '2023-01-14', 'Por devolver el libro en mal estado'
-EXEC SP_InsertarMulta '003', 1, '2023-01-14', 'Por devolver el libro en mal estado'
-EXEC SP_InsertarMulta '004', 1, '2023-01-14', 'Por devolver el libro en mal estado'
-EXEC SP_InsertarMulta '005', 5, '2023-01-05', 'Por devolver el libro en mal estado'
+EXEC SP_InsertarMulta '001', 1, '2023-01-15', 'Libro en mal Estado'
+EXEC SP_InsertarMulta '002', 2, '2023-01-14', 'Libro en mal Estado'
+EXEC SP_InsertarMulta '003', 3, '2023-01-14', 'Libro en mal Estado'
+EXEC SP_InsertarMulta '004', 4, '2023-01-14', 'Libro en mal Estado'
+EXEC SP_InsertarMulta '005', 5, '2023-01-05', 'Libro en mal Estado'
+EXEC SP_InsertarMulta '006', 6, '2023-01-15', 'Libro extraviado'
+EXEC SP_InsertarMulta '007', 7, '2023-01-13', 'Libro extraviado'
+EXEC SP_InsertarMulta '008', 8, '2023-01-12', 'Libro extraviado'
+EXEC SP_InsertarMulta '009', 9, '2023-01-14', 'Libro extraviado'
+EXEC SP_InsertarMulta '010', 10, '2023-01-11', 'Libro en mal Estado'
 
 --DATOS DE DETALLE MULTAS
 
@@ -496,12 +513,43 @@ EXEC SP_InsertarDetalleMulta '001' , 1, 'PAGADA'
 EXEC SP_InsertarDetalleMulta '001' , 2, 'PAGADA'
 EXEC SP_InsertarDetalleMulta '001' , 3, 'NO PAGADA'
 
-EXEC SP_InsertarDetalleMulta '002' , 1, 'PAGADA'
-EXEC SP_InsertarDetalleMulta '002' , 2, 'NO PAGADA'
-EXEC SP_InsertarDetalleMulta '002' , 3, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '002' , 4, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '002' , 5, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '002' , 6, 'PAGADA'
 
-EXEC SP_InsertarDetalleMulta '005' , 4, 'NO PAGADA'
-EXEC SP_InsertarDetalleMulta '005' , 5, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '003' , 7, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '003' , 8, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '003' , 9, 'NO PAGADA'
+
+EXEC SP_InsertarDetalleMulta '004' , 1, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '004' , 2, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '004' , 3, 'NO PAGADA'
+
+EXEC SP_InsertarDetalleMulta '005' , 4, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '005' , 5, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '005' , 6, 'NO PAGADA'
+
+EXEC SP_InsertarDetalleMulta '006' , 7, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '006' , 8, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '006' , 9, 'NO PAGADA'
+
+EXEC SP_InsertarDetalleMulta '007' , 8, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '007' , 9, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '007' , 3, 'NO PAGADA'
+
+EXEC SP_InsertarDetalleMulta '008' , 10, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '008' , 2, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '008' , 3, 'NO PAGADA'
+
+EXEC SP_InsertarDetalleMulta '009' , 1, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '009' , 2, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '009' , 3, 'PAGADA'
+
+EXEC SP_InsertarDetalleMulta '010' , 4, 'NO PAGADA'
+EXEC SP_InsertarDetalleMulta '010' , 5, 'PAGADA'
+EXEC SP_InsertarDetalleMulta '010' , 6, 'PAGADA'
+
+Select * from DETALLE_MULTA ORDER BY MUL_Id
 
 /*Insertar datos en la tabla PRESTAMOS
 
